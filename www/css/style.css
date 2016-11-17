@@ -1,0 +1,76 @@
+/* Empty. Add your own CSS if you like */
+.menu-style{
+	background-image: url('../img/menu_background.jpg');
+	background-size: 100% 100%;
+}
+
+.custom-menu .item-content{
+	background-size: 100% 100%; background-color: transparent;
+	height: 50px; width: 220px; margin: 20px 0px;
+}
+
+.custom-menu .item-content.activated{
+	background-color: transparent; !important;
+}
+
+.custommenu-list{
+	padding: 0 25px; background: transparent;
+}
+
+.menu-news-style .item-content{
+	background-image : url('../img/menu_news.png'); 
+}
+
+.menu-standings-style .item-content{
+	background-image : url('../img/menu_standings.png'); 
+}
+
+.menu-more-style .item-content{
+	background-image : url('../img/menu_more.png'); 
+}
+
+.item{
+	border : none;
+}
+
+.menu-position{
+	margin-top : 27vh;
+}
+
+.bar-header {
+	background-image : url('../img/header.png') !important;
+	background-size : 100% 100% !important;
+}
+
+.title{
+	color : white !important;
+	font-weight: bold !important;
+}
+
+.menu-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/menu_icon.png') !important;
+	width : 65px; background-size : 100% 100%;
+}
+
+.more-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/more_icon.png') !important;
+	width : 65px; background-size : 100% 100%;
+}
+.news-list-style .item-content{
+	background-image : url('../img/cell.png'); padding : 10px; height: 15vh; color: white; position: relative;
+}
+
+.cell-image{
+	height: 100%; border-color: black; border-width : 2px; border-style : inset; vertical-align: middle; margin-right: 13px;
+}
+
+.cell-text{
+	color : white !important; padding-left : 13px; width : 50%; position : relative;
+	float: left; font-size : 3vh !important;
+}
+
+.arrow-image{
+	height: 3vh; position: absolute; top: 6vh; right: 5%;
+}

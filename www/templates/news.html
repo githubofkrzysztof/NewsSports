@@ -1,0 +1,24 @@
+<!-- <ion-view view-title="News Feed">
+  <ion-content>
+    <ion-list>
+      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        <img src="img/cell_img.jpg" class="cell-image"/>
+         <p class="cell-text">{{playlist.title}}</p>
+        <img src="img/arrow.png" class="arrow-image"/>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view> -->
+
+<ion-view view-title="News Feed">
+  <ion-content>
+    <ion-list>
+      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        <img src="img/cell_img.jpg" class="cell-image"/>
+         {{playlist.title}}
+        <img src="img/arrow.png" class="arrow-image"/>
+        
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
