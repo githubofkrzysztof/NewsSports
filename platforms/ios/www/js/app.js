@@ -64,11 +64,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/news-source.html',
+        controller: 'NewsSourceCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/news');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

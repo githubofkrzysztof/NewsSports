@@ -1,16 +1,8 @@
-<!-- <ion-view view-title="News Feed">
-  <ion-content>
-    <ion-list>
-      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        <img src="img/cell_img.jpg" class="cell-image"/>
-         <p class="cell-text">{{playlist.title}}</p>
-        <img src="img/arrow.png" class="arrow-image"/>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-view> -->
-
 <ion-view view-title="News Feed">
+	<ion-nav-buttons side="right">
+        <button class="button more-button" ng-click="moreOptions()">
+        </button>
+    </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
@@ -21,4 +13,17 @@
       </ion-item>
     </ion-list>
   </ion-content>
+
+   <div class="more-options-container" ng-if="alert_flag">
+	<div class="more-options-subcontainer">
+		<h2 class="more-options-text">More Options</h2>
+		<img src="img/refresh.png" class="refresh-button">
+        </img>
+        <img src="img/mark_all.png" class="mark-button">
+        </img>
+        <img src="img/cancel.png" class="cancel-button" ng-click="cancelOptions()">
+        </img>
+	</div>
+  </div> 
 </ion-view>
+

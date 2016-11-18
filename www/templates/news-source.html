@@ -1,20 +1,30 @@
-<ion-view view-title="News Feed">
+<ion-view view-title="News Source">
 	<ion-nav-buttons side="right">
         <button class="button more-button" ng-click="moreOptions()">
         </button>
     </ion-nav-buttons>
   <ion-content>
+    <div class="search-container">
+    	<label class="item item-input search">
+    		<i class="icon ion-search placeholder-icon"></i>
+    		<input type="text" placeholder="Search">
+    	</label>
+    </div>
+
+    <div class="source-name">
+    Source Name
+    </div>
+
     <ion-list>
-      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        <img src="img/cell_img.jpg" class="cell-image"/>
-         {{playlist.title}}
+      <ion-item class="news-list-style" ng-repeat="article in articles" href="#/app/xxxS/{{article.id}}">
+        <img src="img/article.jpg" class="article-image"/>
+        <div class="article-text">{{article.title}}</div>
         <img src="img/arrow.png" class="arrow-image"/>
-        
       </ion-item>
     </ion-list>
   </ion-content>
 
-   <div class="more-options-container" ng-if="alert_flag">
+  <div class="more-options-container" ng-if="alert_flag">
 	<div class="more-options-subcontainer">
 		<h2 class="more-options-text">More Options</h2>
 		<img src="img/refresh.png" class="refresh-button">
@@ -26,4 +36,3 @@
 	</div>
   </div> 
 </ion-view>
-
