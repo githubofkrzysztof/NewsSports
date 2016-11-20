@@ -217,6 +217,10 @@ angular.module('starter.controllers', [])
     // }, 1000);
   };
 
+})
+
+.controller('LiveScoresCtrl', function($scope) {
+
 });
 
 

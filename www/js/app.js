@@ -88,7 +88,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'ArticleCtrl'
       }
     }
+  })
+
+  .state('app.livescores', {
+    url: '/livescores',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/livescores.html',
+        controller: 'LiveScoresCtrl'
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/news');
 });
