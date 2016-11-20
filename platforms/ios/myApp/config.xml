@@ -32,6 +32,9 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="IonicKeyboard" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
     <name>myApp</name>
     <description>
         An Ionic Framework and Cordova project.
@@ -41,6 +44,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="*" subdomains="true" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />

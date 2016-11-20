@@ -52,4 +52,22 @@
     <splash src="resources/ios/splash/Default@2x~iphone.png" height="960" width="640"/>
     <splash src="resources/ios/splash/Default~iphone.png" height="480" width="320"/>
   </platform>
+  <access origin="*" subdomains="true" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <!-- <allow-navigation href="*" /> -->
 </widget>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

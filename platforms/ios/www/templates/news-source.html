@@ -16,7 +16,7 @@
     </div>
 
     <ion-list>
-      <ion-item class="news-list-style" ng-repeat="article in articles" href="#/app/xxxS/{{article.id}}">
+      <ion-item class="news-list-style" ng-repeat="article in articles" href="#/app/article-preview/{{article.id}}">
         <img src="img/article.jpg" class="article-image"/>
         <div class="article-text">{{article.title}}</div>
         <img src="img/arrow.png" class="arrow-image"/>
@@ -24,7 +24,7 @@
     </ion-list>
   </ion-content>
 
-  <div class="more-options-container" ng-if="alert_flag">
+  <!-- <div class="more-options-container" ng-if="alert_flag">
 	<div class="more-options-subcontainer">
 		<h2 class="more-options-text">More Options</h2>
 		<img src="img/refresh.png" class="refresh-button">
@@ -34,5 +34,5 @@
         <img src="img/cancel.png" class="cancel-button" ng-click="cancelOptions()">
         </img>
 	</div>
-  </div> 
+  </div> --> 
 </ion-view>

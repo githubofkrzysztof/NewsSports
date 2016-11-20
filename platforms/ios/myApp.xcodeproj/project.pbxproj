@@ -21,6 +21,7 @@
 		3957A8B3A7ED4C7E9C16ADBA /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 311DF7CE0026427894EC9480 /* CDVViewController+SplashScreen.m */; };
 		4159C257C13242F883A82AF4 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D273907010AA4A39906958FC /* CDVStatusBar.m */; };
 		369E0CFBE36C44E18E98A077 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0762AE90B12A435C86E6F2B2 /* IonicKeyboard.m */; };
+		E42E6731DF474E50AB215C6B /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B816E49C864B9385E9014B /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		2D0982E66ED1474E9D388769 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0762AE90B12A435C86E6F2B2 /* IonicKeyboard.m */ = {isa = PBXFileReference; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		B3C2774DA793406896758DB3 /* IonicKeyboard.h */ = {isa = PBXFileReference; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		09B816E49C864B9385E9014B /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		838DB34024654A86B36DFA5E /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 				2D0982E66ED1474E9D388769 /* CDVStatusBar.h */,
 				0762AE90B12A435C86E6F2B2 /* IonicKeyboard.m */,
 				B3C2774DA793406896758DB3 /* IonicKeyboard.h */,
+				09B816E49C864B9385E9014B /* CDVInAppBrowser.m */,
+				838DB34024654A86B36DFA5E /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "myApp/Plugins";
@@ -306,6 +311,7 @@
 				3957A8B3A7ED4C7E9C16ADBA /* CDVViewController+SplashScreen.m in Sources */,
 				4159C257C13242F883A82AF4 /* CDVStatusBar.m in Sources */,
 				369E0CFBE36C44E18E98A077 /* IonicKeyboard.m in Sources */,
+				E42E6731DF474E50AB215C6B /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

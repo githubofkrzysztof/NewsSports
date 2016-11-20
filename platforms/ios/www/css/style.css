@@ -1,4 +1,7 @@
 /* Empty. Add your own CSS if you like */
+
+/*  Menu Screen  */
+
 .menu-style{
 	background-image: url('../img/menu_background.jpg');
 	background-size: 100% 100%;
@@ -25,7 +28,19 @@
 	background-image : url('../img/menu_standings.png'); 
 }
 
-.menu-more-style .item-content{
+.menu-scores-style .item-content{
+	background-image : url('../img/menu_more.png'); 
+}
+
+.menu-share-style .item-content{
+	background-image : url('../img/menu_more.png'); 
+}
+
+.menu-feedback-style .item-content{
+	background-image : url('../img/menu_more.png'); 
+}
+
+.menu-removeads-style .item-content{
 	background-image : url('../img/menu_more.png'); 
 }
 
@@ -34,9 +49,10 @@
 }
 
 .menu-position{
-	margin-top : 27vh;
+	margin-top : 5vh;
 }
 
+/*  News Feeds Screen  */
 .bar-header {
 	background-image : url('../img/header.png') !important;
 	background-size : 100% 100% !important;
@@ -60,11 +76,13 @@
 }
 
 .news-list-style .item-content{
-	background-image : url('../img/cell.png'); padding : 10px; height: 15vh; color: white; position: relative; font-weight: 800; font-size : 2.2vh;
+	background-image : url('../img/cell.png'); padding : 10px; height: 15vh; 
+	color: white; position: relative; font-weight: 800; font-size : 2.2vh;
 }
 
 .cell-image{
-	height: 100%; border-color: black; border-width : 2px; border-style : inset; vertical-align: middle; margin-right: 13px;
+	height: 100%; border-color: black; border-width : 2px; border-style : inset; 
+	vertical-align: middle; margin-right: 13px; width : 30%;
 }
 
 .arrow-image{
@@ -72,11 +90,13 @@
 }
 
 .more-options-container{
-	position : relative; width : 100%; height: 100%; top : 0; left : 0; background-color : rgba(255, 255, 255, 0.8); z-index : 10; 
+	position : relative; width : 100%; height: 100%; top : 0; left : 0; 
+	background-color : rgba(255, 255, 255, 0.8); z-index : 10; 
 }
 
 .more-options-subcontainer{
-	position : absolute; width : 80vw;  top: 30vh; left : 10vw; background-image : url('../img/more_options_background.png');
+	position : absolute; width : 80vw;  top: 30vh; left : 10vw; 
+	background-image : url('../img/more_options_background.png');
 	background-size : 100% 100%; color : white; opacity: 0.85;
 }
 
@@ -96,6 +116,8 @@
 	width:50%; margin-left : 25%; margin-bottom : 20px;
 }
 
+/*  News Source Screen  */
+
 .custom-back-button{
 	background-image : url('../img/back.png') !important;
 	background-size: 100% 100% !important; width : 50px !important;
@@ -106,7 +128,8 @@
 }
 
 .search-container{
-	position : relative; height : 6vh; background-image : url('../img/cell.png') !important; background-size: 100% 100%;
+	position : relative; height : 6vh; background-image : url('../img/cell.png') !important; 
+	background-size: 100% 100%;
 }
 
 .search{
@@ -124,8 +147,90 @@
 }
 
 .article-image{
-	height: 100%; border-color: black; border-width : 2px; border-style : inset; margin-right: 13px; float: left;
+	height: 100%; border-color: black; border-width : 2px; border-style : inset; margin-right: 13px; 
+	float: left;
 }
+
+/*  Article Preview Screen  */
+
+.up-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/up.png') !important;
+	width : 37px; background-size : 100% 100%;
+}
+
+.down-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/down.png') !important;
+	width : 37px; background-size : 100% 100%;
+}
+
+.article-preview-image{
+	width : 100%; height : 40vh;
+}
+
+.article-preview-title{
+	background-image: url('../img/title_background.png'); margin-top: -4px;
+	height: 8vh; font-size:3vh; text-align:center; padding-top:2.5vh; color : white;
+	padding-left : 5vw; padding-right:5vw; text-overflow: hidden; background-size:100% 100%;
+}
+
+.article-description{
+	background-image : url('../img/description_background.png'); background-size: 100% 100%;
+	height : calc(52vh - 18vw - 60px); color : white; text-align: center; padding-top: 2vh; padding-left: 3vh; 
+	padding-right:3vh; font-size : 2.5vh; line-height: 1.5em;
+}
+
+.read-button{
+	width : 100%; height: 18vw; background-image : url('../img/read_button.png');
+	background-size : 100% 100%; margin-top: -2px;
+}
+
+/*  Article Screen  */
+
+.article-content{
+	height : calc(100vh - 16vw - 60px); background-image : url('../img/description_background.png'); 
+	background-size : 100% 100%; width: 100%;
+}
+
+.bottom-bar{
+	height : 16vw; background-image : url('../img/header.png'); 
+	background-size : 100% 100%; margin-top: -5px;
+}
+
+.left-button{
+	width : 7vw;  margin-left : 5vw; vertical-align: middle;
+}
+
+.right-button{
+	width : 7vw;  margin-left : 1vw; vertical-align: middle;
+}
+
+.reload-button{
+	width : 7vw;  margin-left : 15vw; vertical-align: middle;
+}
+
+.open-safari-button{
+	width : 8vw;  margin-left : 15vw; vertical-align: middle;
+}
+
+.more-settings-button{
+	width : 7vw; margin-top : 6.5vw; margin-left : 15vw; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

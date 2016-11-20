@@ -68,11 +68,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'NewsSourceCtrl'
       }
     }
+  })
+
+  .state('app.article-preview', {
+    url: '/article-preview/:articleId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/article-preview.html',
+        controller: 'ArticlePreviewCtrl'
+      }
+    }
+  })
+
+  .state('app.article', {
+    url: '/article',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/article.html',
+        controller: 'ArticleCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/news');
 });
-
 
 
 
