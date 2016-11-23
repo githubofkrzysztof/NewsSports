@@ -1,25 +1,50 @@
-<ion-view view-title="News Source">
+<ion-view view-title="CBS Sports">
 	<ion-nav-buttons side="right">
-        <button class="button more-button" ng-click="moreOptions()">
-        </button>
+        
+        <i class="icon ion-ios-gear menu-button" ng-click="moreOptions()">
+        </i>
+    
     </ion-nav-buttons>
   <ion-content>
+
     <div class="search-container">
     	<label class="item item-input search">
     		<i class="icon ion-search placeholder-icon"></i>
-    		<input type="text" placeholder="Search">
+    		<input type="text" placeholder="Search" class="input-text">
     	</label>
     </div>
 
-    <div class="source-name">
+    <!-- <div class="source-name">
     Source Name
-    </div>
+    </div> -->
 
-    <ion-list>
+    <!-- <ion-list>
       <ion-item class="news-list-style" ng-repeat="article in articles" href="#/app/article-preview/{{article.id}}">
         <img src="img/article.jpg" class="article-image"/>
         <div class="article-text">{{article.title}}</div>
         <img src="img/arrow.png" class="arrow-image"/>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-list >
+      <ion-item ng-repeat="article in articles" href="#/app/article-preview/{{article.id}}" class="article-list-style">
+        <div class="card">
+
+          <img src="img/article-image.jpg" class="article-image"></img>
+          <div class="article-text">{{article.title}}</div>
+          <div class="time-text">2m ago</div>
+          <!-- <div class="item item-divider">
+          Header
+          </div> -->
+
+          <!-- <div class="item item-text-wrap">
+          Simple Card Example .....
+          </div> -->
+
+          <!-- <div class="item item-divider">
+          Footer
+          </div> -->
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

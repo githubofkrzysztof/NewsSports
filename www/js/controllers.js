@@ -113,6 +113,7 @@ angular.module('starter.controllers', [])
 
     var hideSheet=$ionicActionSheet.show({
       buttons: [
+        {text: '<b>Manage Feeds</b>'},
         {text: '<b>Refresh</b>'},
         {text: '<b>Mark All as Read</b>'}
       ],
@@ -123,7 +124,7 @@ angular.module('starter.controllers', [])
         hideSheet();
       },
 
-      buttonClicked:function(inded){
+      buttonClicked:function(index){
         return true;
       }
     });
@@ -173,16 +174,16 @@ angular.module('starter.controllers', [])
   }
 
   $scope.articles = [
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL' , id: 1, source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 2 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 3 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 4 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 5 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 6 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 7 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 8 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 9 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to start in NFL', id: 10 , source_id: 1}
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...' , id: 1, source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 2 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 3 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 4 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 5 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 6 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 7 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 8 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 9 , source_id: 1},
+    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 10 , source_id: 1}
   ];
 })
 
