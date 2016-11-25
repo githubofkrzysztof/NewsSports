@@ -12,7 +12,7 @@
 }
 
 .logo-icon{
-	background-image: url('../img/sports.jpg'); color : white; font-size : 15px;
+	background-image: url('../img/logo.png'); color : white; font-size : 15px;
 	background-size : 100% 100%; height : 200px; width : 100%; opacity: 1; 
 	padding-top: 150px; padding-left : 10px;
 }
@@ -177,7 +177,7 @@ input[type="text"]{
 	background-color : rgb(36, 36, 36); padding: 0px;
 }
 
-.card{
+.card-source{
 	margin: 5px 10px 5px 10px; width: calc(100% - 20px); height: 35vh; padding: 0px; border-radius: 7px;
 	border-color: rgb(36, 36, 36);
 	background-color: rgb(36, 36, 36);
@@ -341,9 +341,45 @@ input[type="text"]{
 }
 
 
+/* Manage Feeds */
 
+.save-button{
+	background-color : transparent !important; border : none !important;
+	margin-top : 6px;
+	width: 50px; color : white; font-size : 18px; margin-left: 5px; text-align: center;
+}
 
+.more-option-icon{
+	color : white; font-size : 30px; margin-left : 10px; margin-right : 10px;
+}
+.card-manage {
+	width: 25vw; margin: 4vw 4vw; height: 25vw; float: left; display: flex; justify-content: center; 
+	align-items: center;
+	position: relative; border-radius: 10px; border-color : rgb(36,36,36); 
+}
 
+.sources-text{
+	color : white; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 100%); 
+	font-size: 2vh; position: absolute; bottom : 0px; left : 0; text-align : center;
+	width: 100%; height: auto; padding: 5px 5px;
+}
+
+.check-box{
+	position: absolute; top :0px; right : -30px; background-color: transparent;
+}
+
+.manage-content{
+	display: inline-block; width: 100%; background-color: rgb(36,36,36);
+}
+.manage-image{
+	width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+	.card-manage {
+		width: 40vw; margin: 5vw 5vw; height: 40vw; float: left;
+	}
+}
 
 
 

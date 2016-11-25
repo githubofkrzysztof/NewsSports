@@ -125,6 +125,7 @@ angular.module('starter.controllers', [])
       },
 
       buttonClicked:function(index){
+        window.location.href="#/app/manage-feeds";
         return true;
       }
     });
@@ -222,6 +223,81 @@ angular.module('starter.controllers', [])
 
 .controller('LiveScoresCtrl', function($scope) {
 
+})
+
+.controller('ManageFeedsCtrl', function($scope, $stateParams,$ionicActionSheet, $timeout) {
+
+    $scope.newslists = [
+      { title: 'ESPN', id: 1 },
+      { title: 'CBS Sports', id: 2 },
+      { title: 'Yahoo Sports', id: 3 },
+      { title: 'NBC Pro Football Talk', id: 4 },
+      { title: 'Bleacher Report', id: 5 },
+      { title: 'Sports Illustrated', id: 6 },
+      { title: 'NFL', id: 7 },
+      { title: 'Fox Sports', id: 8 },
+
+      { title: 'NBC Sports', id: 9 },
+      { title: 'SBNation', id: 10 },
+      { title: 'Arizona Cardinals', id: 11 },
+      { title: 'Atlanta Falcons', id: 12 },
+      { title: 'Baltimore Ravens', id: 13 },
+      { title: 'Buffalo Bills', id: 14 },
+      { title: 'Carolina Panthers', id: 15 },
+      { title: 'Chicago Bears', id: 16 },
+      { title: 'Cincinnati Bengals', id: 17 },
+      { title: 'Cleveland Browns', id: 18 },
+      { title: 'Dallas Cowboys', id: 19 },
+      { title: 'Denver Broncos', id: 20 },
+      { title: 'Detroit Lions', id: 21 },
+      { title: 'Green Bay Packers', id: 22 },
+      { title: 'Houston Texans', id: 23 },
+      { title: 'Indianapolis Colts', id: 24 },
+      { title: 'Jacksonville Jaguars', id: 25 },
+      { title: 'Kansas City Chiefs', id: 26 },
+      { title: 'Los Angeles Rams', id: 27 },
+      { title: 'Miami Dolphins', id: 28 },
+      { title: 'Minnesota Vikings', id: 29 },
+      { title: 'New England Patriots', id: 30 },
+      { title: 'New Orleans Saints', id: 31 },
+      { title: 'New York Giants', id: 32 },
+      { title: 'New York Jets', id: 33 },
+      { title: 'Oakland Raiders', id: 34 },
+      { title: 'Philadelphia Eagles', id: 35 },
+      { title: 'Pittsburgh Streelers', id: 36 },
+      { title: 'San Diego Chargers', id: 37 },
+      { title: 'San Francisco 49ers', id: 38 },
+      { title: 'Seattle Seahawks', id: 39 },
+      { title: 'Tampa Bay Buccaneers', id: 40 },
+      { title: 'Tennessee Titans', id: 41 },
+      { title: 'Washington Redskins', id: 42 },
+      { title: 'Twitter', id: 43}
+    
+  ];
+
+  $scope.selectAll = function(){
+    $scope.alert_flag = true;
+
+    var hideSheet=$ionicActionSheet.show({
+      buttons: [
+        {text: '<b>Select All</b>'}
+      ],
+      //destructiveText: 'Delete',
+      titleText: 'More Options',
+      cancelText: 'Cancel',
+      cancel: function(){
+        hideSheet();
+      },
+
+      buttonClicked:function(index){
+        return true;
+      }
+    });
+
+    // $timeout(function(){
+    //   hideSheet();
+    // }, 1000);
+  };
 });
 
 

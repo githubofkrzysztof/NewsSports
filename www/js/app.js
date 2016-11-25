@@ -98,6 +98,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'LiveScoresCtrl'
       }
     }
+  })
+
+  .state('app.manage-feeds', {
+    url: '/manage-feeds',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/manage-feeds.html',
+        controller: 'ManageFeedsCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

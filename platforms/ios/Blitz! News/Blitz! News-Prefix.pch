@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'HelloCordova' target in the 'HelloCordova' project
+// Prefix header for all source files of the 'Blitz! News' target in the 'Blitz! News' project
 //
 
 #ifdef __OBJC__
