@@ -12,9 +12,9 @@
 }
 
 .logo-icon{
-	background-image: url('../img/logo.png'); color : white; font-size : 15px;
-	background-size : 100% 100%; height : 200px; width : 100%; opacity: 1; 
-	padding-top: 150px; padding-left : 10px;
+	background-image: url('../img/logo.png'); color : white;
+	background-size : 100% 100%; background-position:center; height : 200px; width : 100%;
+	padding-top: 175px; text-align: left; font-size: 15px; font-style: italic; padding-left : 10px;
 }
 .custom-menu .item-content{
 	background-size: 100% 100%; background-color: transparent;
@@ -287,23 +287,37 @@ input[type="text"]{
 	width : 65px; background-size : 100% 100%;
 }
 
-.banner{
-	width : 100%;
+.standing-content{
+	height : calc(100vh - 124px); background-color : rgb(21, 21, 21);
 }
 
+.banner{
+	width : 100%; position: fixed; height: 60px; bottom: 0px;
+}
+
+/*.standing-list-container .list{
+	height : calc(100vh - 124px); overflow-y: scroll; overflow-x: hidden;
+}*/
+/*.standing-list-container{
+
+	height : calc(100vh - 124px); position: relative; overflow: visible;
+}*/
 .standing-list-style{
-	background-image : url('../img/cell.png'); background-size: 100% 100%; padding : 10px; 
-	color: white; position: relative; font-weight: 800; font-size : 2.2vh; text-align: center;
+	padding : 0px; background-color: rgb(36,36,36); border-radius : 10px; 
+	color: white; position: relative; font-weight: 800; font-size : 2.2vh; text-align: center; 
 }
 
 .col{
-	height: 5vh; margin-top: 1.5vh;
+	height: 5vh; padding-top : 1.6vh;
 }
 
 .custom-header{
-	font-size: 2.5vh; font-weight: 800;
+	font-size: 2.5vh; font-weight: 800; background-color: rgb(46, 46, 46); 
 }
 
+.row.table-body{
+	border-bottom: solid; border-width: 2px; border-color : rgb(46, 46, 46);
+}
 /* Live Scores Screen */
 
 .livescore-style{
