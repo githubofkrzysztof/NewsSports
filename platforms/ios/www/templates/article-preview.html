@@ -1,12 +1,17 @@
-<ion-view view-title="CBS Sports">
+
+<ion-view view-title="{{title}}">
 	<ion-nav-buttons side="right">
         <button class="button up-button">
         </button>
         <button class="button down-button">
         </button>
     </ion-nav-buttons>
+
+
   <ion-content>
-  	<img src="img/article-image.jpg" class="article-preview-image"/>
+    <iframe ng-src="{{link}}" style="width: 100%; height : 100vh;"></iframe>
+    
+  	<!-- <img src="img/article-image.jpg" class="article-preview-image"/>
   	<div class="article-preview-title">
   	Virginia dismisses Memphis...
   	</div>
@@ -17,6 +22,6 @@
   		 Cavaliers coach Tony Bennett announced Friday night.</p>
   	</div>
   	<a class="button read-button" href="#/app/article">
-  	</a>
+  	</a> -->
   </ion-content>
 </ion-view>

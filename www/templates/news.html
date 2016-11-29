@@ -1,13 +1,11 @@
 <ion-view view-title="News Feeds">
 	<ion-nav-buttons side="right">
-        <i class="icon ion-ios-gear menu-button" ng-click="moreOptions()">
-        </i>
-    </ion-nav-buttons>
+    <i class="icon ion-ios-gear menu-button" ng-click="moreOptions()">
+    </i>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        
-
+      <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{$index}}">
         <img src="img/sources/{{playlist.id}}.png" class="cell-image"/>
          {{playlist.title}}
         <i class="icon ion-chevron-right arrow-image"></i>

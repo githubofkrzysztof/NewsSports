@@ -44,23 +44,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 },
-    { title: 'Rap', id: 7 },
-    { title: 'Rap', id: 8 },
-    { title: 'Rap', id: 9 },
-    { title: 'Rap', id: 10 }
-  ];
+ 
 })
 
-.controller('NewsCtrl', function($scope, $ionicActionSheet, $timeout) {
+.controller('NewsCtrl', function($scope, $ionicActionSheet, $timeout, $rootScope) {
   $scope.alert_flag = false;
-  $scope.playlists = [
+  $rootScope.playlists = [
     { title: 'ESPN', id: 1 },
     { title: 'CBS Sports', id: 2 },
     { title: 'Yahoo Sports', id: 3 },
@@ -69,7 +58,6 @@ angular.module('starter.controllers', [])
     { title: 'Sports Illustrated', id: 6 },
     { title: 'NFL', id: 7 },
     { title: 'Fox Sports', id: 8 },
-
     { title: 'NBC Sports', id: 9 },
     { title: 'SBNation', id: 10 },
     { title: 'Arizona Cardinals', id: 11 },
@@ -140,10 +128,51 @@ angular.module('starter.controllers', [])
   // }
 })
 
-.controller('NewsSourceCtrl', function($scope, $stateParams, $ionicActionSheet, $timeout) {
+.controller('NewsSourceCtrl', function($scope, $stateParams, $ionicActionSheet, $timeout, $rootScope, $http, $cordovaInAppBrowser) {
   $scope.alert_flag = false;
-  $scope.test_text = $stateParams.playlistId;
+  $scope.title = $rootScope.playlists[$stateParams.playlistId].title;
+  $rootScope.posts=[];
   //alert($stateParams.playlistId);
+
+  if ($stateParams.playlistId == 0 ){
+    var url = "http://www.espn.com/espn/rss/nfl/news";
+    var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=";
+    var request = $http.jsonp(google_converter + encodeURIComponent(url));
+    request.success(function(res){
+      $rootScope.posts=res.responseData.feed.entries;
+      console.log($rootScope.posts);
+    })
+  }
+
+  $scope.openbrowser = function (index) {
+    console.log($rootScope.posts[index].link);
+    var options = {
+      location: 'no',
+      clearcache: 'yes',
+      toolbar: 'no'
+   };
+     $cordovaInAppBrowser.open($rootScope.posts[index].link, '_self', options)
+    
+      .then(function(event) {
+         // success
+      })
+    
+      .catch(function(event) {
+         // error
+      });
+  }
+
+  $scope.doRefresh = function(){
+    var url = "http://www.espn.com/espn/rss/nfl/news";
+    var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=";
+    var request = $http.jsonp(google_converter + encodeURIComponent(url));
+    request.success(function(res){
+      $rootScope.posts=res.responseData.feed.entries;
+      console.log($rootScope.posts);
+    })
+
+    $scope.$broadcast('scroll.refreshComplete');
+  }
 
   $scope.moreOptions = function(){
     $scope.alert_flag = true;
@@ -188,8 +217,23 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('ArticlePreviewCtrl', function($scope, $stateParams) {
+.controller('ArticlePreviewCtrl', function($scope, $stateParams, $rootScope, $cordovaInAppBrowser, $sce) {
+    $scope.link = $sce.trustAsResourceUrl($rootScope.posts[$stateParams.articleId].link);
+    //$scope.link = $sce.trustAsResourceUrl("http://www.espn.com");
+    $scope.title = $rootScope.posts[$stateParams.articleId].title;
+    //alert($scope.link);
 
+     
+      // $cordovaInAppBrowser.open($scope.link, '_blank', 'toolbar=no')
+    
+      // .then(function(event) {
+      //    // success
+      // })
+    
+      // .catch(function(event) {
+      //    // error
+      // });
+   
 })
 
 .controller('ArticleCtrl', function($scope, $ionicActionSheet, $timeout) {
