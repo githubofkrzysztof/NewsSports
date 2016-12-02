@@ -1,27 +1,27 @@
 <ion-view view-title="{{title}}">
-	<ion-nav-buttons side="right">
+	<!-- <ion-nav-buttons side="right">
         
         <i class="icon ion-ios-gear menu-button" ng-click="moreOptions()">
         </i>
     
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
   <ion-content>
 
     <div class="search-container">
     	<label class="item item-input search">
     		<i class="icon ion-search placeholder-icon"></i>
-    		<input type="text" placeholder="Search" class="input-text">
+    		<input type="search" placeholder="Search" class="input-text" ng-model="searchQuery"/>
     	</label>
     </div>
 
-    <ion-refresher on-refresh="doRefresh()" pulling-text="Update news..."></ion-refresher>
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list >
       <!-- <ion-item ng-repeat="post in posts" class="article-list-style" href="#/app/article-preview/{{$index}}" > -->
-      <ion-item ng-repeat="post in posts" class="article-list-style" href="#" ng-click="openbrowser({{$index}})">
+      <ion-item ng-repeat="post in posts | filter:searchQuery" class="article-list-style" href="#" ng-click="openbrowser({{$index}})">
         <div class="card card-source">
 
-          <img src="img/sources/1.png" class="article-image"></img>
-          <div class="article-text">{{post.title}}</div>
+          <img src="{{images[$index]}}" class="article-image"></img>
+          <div class="article-text" ng-bind-html="post.title"></div>
           <div class="time-text">{{post.publishedDate}}</div>
           
         </div>

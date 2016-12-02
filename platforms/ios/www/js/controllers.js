@@ -101,9 +101,7 @@ angular.module('starter.controllers', [])
 
     var hideSheet=$ionicActionSheet.show({
       buttons: [
-        {text: '<b>Manage Feeds</b>'},
-        {text: '<b>Refresh</b>'},
-        {text: '<b>Mark All as Read</b>'}
+        {text: '<b>Manage Feeds</b>'}
       ],
       //destructiveText: 'Delete',
       titleText: 'More Options',
@@ -128,21 +126,106 @@ angular.module('starter.controllers', [])
   // }
 })
 
-.controller('NewsSourceCtrl', function($scope, $stateParams, $ionicActionSheet, $timeout, $rootScope, $http, $cordovaInAppBrowser) {
+.controller('NewsSourceCtrl', function($scope, $stateParams, $ionicActionSheet, 
+                  $ionicScrollDelegate, $timeout, $rootScope, $http, $cordovaInAppBrowser) {
   $scope.alert_flag = false;
   $scope.title = $rootScope.playlists[$stateParams.playlistId].title;
-  $rootScope.posts=[];
+  
   //alert($stateParams.playlistId);
+  
 
-  if ($stateParams.playlistId == 0 ){
-    var url = "http://www.espn.com/espn/rss/nfl/news";
-    var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=";
-    var request = $http.jsonp(google_converter + encodeURIComponent(url));
+  $scope.getRssFeed = function (url){
+    $rootScope.posts=[];
+    $scope.images=[];
+    
+
+
+
+     var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=100&callback=JSON_CALLBACK&q=";
+     var request = $http.jsonp(google_converter + encodeURIComponent(url));
+
+    //var request = $http.get('https://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent(url));
     request.success(function(res){
-      $rootScope.posts=res.responseData.feed.entries;
+      console.log(res);
+      var insteadposts = res.responseData.feed.entries;
+      for(var ii=0; ii<insteadposts.length; ii++){
+          if (insteadposts[ii].link.includes("nfl") || insteadposts[ii].link.includes("profootballtalk")){
+              $rootScope.posts.push(insteadposts[ii]);
+              if ($stateParams.playlistId == 0){
+                  $scope.images.push("img/sources/1.png");
+              }
+              else if ($stateParams.playlistId == 1){
+                  $scope.images.push("img/sources/2.png");
+              }
+              else if($stateParams.playlistId ==2){
+
+                  if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/3.png");
+                  }
+              }
+              else if($stateParams.playlistId == 3){
+                  $scope.images.push('img/sources/4.png');
+              }
+              else if ($stateParams.playlistId == 4){
+                  $scope.images.push('img/sources/5.png');
+              }
+              else if ($stateParams.playlistId == 5){
+                if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/6.png");
+                  }
+              }
+              else if ($stateParams.playlistId == 6){
+                  $scope.images.push("img/sources/7.png");
+              }
+              else if($stateParams.playlistId == 7){
+                  $scope.images.push("img/sources/8.png");
+              }
+          }
+      }
+      //$rootScope.posts=res.responseData.feed.entries;
       console.log($rootScope.posts);
     })
   }
+
+  var url;
+  $scope.images=[];
+  // $scope.titles=[];
+  // $scope.pubDates=[];
+
+  if ($stateParams.playlistId == 0 ){
+    url = "http://www.espn.com/espn/rss/nfl/news";
+  }
+  else if ($stateParams.playlistId == 1){
+    url = "http://rss.cbssports.com/rss/headlines"
+  }
+  else if ($stateParams.playlistId == 2){
+    url = "http://sports.yahoo.com/nfl/rss.xml"
+  }
+  else if ($stateParams.playlistId == 3){
+    url = "http://profootballtalk.nbcsports.com/category/rumor-mill/feed/atom/";
+  }
+  else if ($stateParams.playlistId == 4){
+    url = "http://bleacherreport.com/articles/feed?tag_id=16";
+  }
+  else if ($stateParams.playlistId == 5){
+    url = "http://www.si.com/rss/si_nfl.rss";
+  }
+  else if ($stateParams.playlistId == 6){
+    url = "http://www.nfl.com/rss/rsslanding?searchString=home";
+  }
+  else if ($stateParams.playlistId == 7){
+    url = "http://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU&tag=nfl";
+  }
+
+  $scope.getRssFeed(url);
 
   $scope.openbrowser = function (index) {
     console.log($rootScope.posts[index].link);
@@ -163,14 +246,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.doRefresh = function(){
-    var url = "http://www.espn.com/espn/rss/nfl/news";
-    var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=";
-    var request = $http.jsonp(google_converter + encodeURIComponent(url));
-    request.success(function(res){
-      $rootScope.posts=res.responseData.feed.entries;
-      console.log($rootScope.posts);
-    })
-
+    $scope.getRssFeed(url);
     $scope.$broadcast('scroll.refreshComplete');
   }
 
