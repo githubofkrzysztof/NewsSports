@@ -146,10 +146,10 @@ angular.module('starter.controllers', [])
 
     //var request = $http.get('https://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent(url));
     request.success(function(res){
-      console.log(res);
+      
       var insteadposts = res.responseData.feed.entries;
       for(var ii=0; ii<insteadposts.length; ii++){
-          if (insteadposts[ii].link.includes("nfl") || insteadposts[ii].link.includes("profootballtalk")){
+          if (insteadposts[ii].content.includes("nfl") || insteadposts[ii].link.includes("nfl") || insteadposts[ii].title.includes("nfl")){
               $rootScope.posts.push(insteadposts[ii]);
               if ($stateParams.playlistId == 0){
                   $scope.images.push("img/sources/1.png");
@@ -168,7 +168,13 @@ angular.module('starter.controllers', [])
                   }
               }
               else if($stateParams.playlistId == 3){
-                  $scope.images.push('img/sources/4.png');
+                  if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/4.png");
+                  }
               }
               else if ($stateParams.playlistId == 4){
                   $scope.images.push('img/sources/5.png');
@@ -187,6 +193,21 @@ angular.module('starter.controllers', [])
               }
               else if($stateParams.playlistId == 7){
                   $scope.images.push("img/sources/8.png");
+              }
+              else if ($stateParams.playlistId == 8){
+                  $scope.images.push("img/sources/9.png");
+              }
+              else if ($stateParams.playlistId == 9){
+                  
+                  var end_position = insteadposts[ii].content.indexOf(">");
+                  var image_str = insteadposts[ii].content.substring(17, end_position-1);
+                  if (image_str != null){
+                    //alert(image_str);
+                    $scope.images.push(image_str);
+                  }
+                  else{
+                    $scope.images.push("/img/sources/10.png");
+                  }
               }
           }
       }
@@ -210,7 +231,7 @@ angular.module('starter.controllers', [])
     url = "http://sports.yahoo.com/nfl/rss.xml"
   }
   else if ($stateParams.playlistId == 3){
-    url = "http://profootballtalk.nbcsports.com/category/rumor-mill/feed/atom/";
+    url = "http://feeds.feedburner.com/pftalk/rumor-mill";
   }
   else if ($stateParams.playlistId == 4){
     url = "http://bleacherreport.com/articles/feed?tag_id=16";
@@ -224,6 +245,15 @@ angular.module('starter.controllers', [])
   else if ($stateParams.playlistId == 7){
     url = "http://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU&tag=nfl";
   }
+  else if ($stateParams.playlistId == 8){
+    url = "http://profootballtalk.nbcsports.com/feed/atom/";
+  }
+  else if ($stateParams.playlistId == 9){
+    url = "http://www.sbnation.com/rss/current";
+  }
+  // else if ($stateParams.playlistId == 9){
+  //   url = "http://www.sbnation.com/rss/current";
+  // }
 
   $scope.getRssFeed(url);
 
