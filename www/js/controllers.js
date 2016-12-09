@@ -141,15 +141,14 @@ angular.module('starter.controllers', [])
 
 
 
-     var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=100&callback=JSON_CALLBACK&q=";
+     var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=50&callback=JSON_CALLBACK&q=";
      var request = $http.jsonp(google_converter + encodeURIComponent(url));
-
     //var request = $http.get('https://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent(url));
     request.success(function(res){
-      
       var insteadposts = res.responseData.feed.entries;
       for(var ii=0; ii<insteadposts.length; ii++){
-          if (insteadposts[ii].content.includes("nfl") || insteadposts[ii].link.includes("nfl") || insteadposts[ii].title.includes("nfl")){
+          if (insteadposts[ii].content.includes("nfl") || insteadposts[ii].link.includes("nfl") || insteadposts[ii].title.includes("nfl") 
+              || $stateParams.playlistId>=10){
               $rootScope.posts.push(insteadposts[ii]);
               if ($stateParams.playlistId == 0){
                   $scope.images.push("img/sources/1.png");
@@ -209,10 +208,121 @@ angular.module('starter.controllers', [])
                     $scope.images.push("/img/sources/10.png");
                   }
               }
+              else if ($stateParams.playlistId == 10){
+                  $scope.images.push("img/sources/11.png");
+              }
+              else if ($stateParams.playlistId == 11){
+                  $scope.images.push("img/sources/12.png");
+              }
+              else if ($stateParams.playlistId == 12){
+                  $scope.images.push("img/sources/13.png");
+              }
+              else if ($stateParams.playlistId == 13){
+                  $scope.images.push("img/sources/14.png");
+              }
+              else if ($stateParams.playlistId == 14){
+                  $scope.images.push("img/sources/15.png");
+              }
+              else if ($stateParams.playlistId == 15){
+                  $scope.images.push("img/sources/16.png");
+              }
+              else if ($stateParams.playlistId == 16){
+                  $scope.images.push("img/sources/17.png");
+              }
+              else if ($stateParams.playlistId == 17){
+                  $scope.images.push("img/sources/18.png");
+              }
+              else if($stateParams.playlistId ==18){
+
+                  if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/19.png");
+                  }
+              }
+              else if($stateParams.playlistId ==19){
+                  $scope.images.push("img/sources/20.png");
+              }
+              else if ($stateParams.playlistId == 20){
+                  $scope.images.push("img/sources/21.png");
+              }
+              else if ($stateParams.playlistId == 21){
+                  $scope.images.push("img/sources/22.png");
+              }
+              else if ($stateParams.playlistId == 22){
+                  $scope.images.push("img/sources/23.png");
+              }
+              else if ($stateParams.playlistId == 23){
+                  $scope.images.push("img/sources/24.png");
+              }
+              else if ($stateParams.playlistId == 24){
+                  $scope.images.push("img/sources/25.png");
+              }
+              else if ($stateParams.playlistId == 25){
+                  $scope.images.push("img/sources/26.png");
+              }
+              else if ($stateParams.playlistId == 26){
+                  $scope.images.push("img/sources/27.png");
+              }
+              else if ($stateParams.playlistId == 27){
+                  $scope.images.push("img/sources/28.png");
+              }
+              else if ($stateParams.playlistId == 28){
+                  $scope.images.push("img/sources/29.png");
+              }
+              else if ($stateParams.playlistId ==29){
+
+                  if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/30.png");
+                  }
+              }
           }
       }
       //$rootScope.posts=res.responseData.feed.entries;
       console.log($rootScope.posts);
+
+      for (var i = 0; i<$rootScope.posts.length; i++){
+          for (var j = i+1; j<$rootScope.posts.length; j++){
+              var d1=Date.parse($rootScope.posts[i].publishedDate);
+              var d2=Date.parse($rootScope.posts[j].publishedDate);
+              var temp;
+              if (d1<d2){
+                  temp = $rootScope.posts[i];
+                  $rootScope.posts[i]=$rootScope.posts[j];
+                  $rootScope.posts[j]=temp;
+              }
+          }
+      }
+
+      for (var i = 0; i<$rootScope.posts.length; i++){
+          
+          var d1=new Date();
+          var d2=new Date($rootScope.posts[i].publishedDate);
+          var diff = new Date(d1.getTime() - d2.getTime());
+          var days = diff.getUTCDate()-1;
+          var hours = diff.getUTCHours();
+          var mins = diff.getUTCMinutes();
+
+          if (days > 0){
+              $rootScope.posts[i].publishedDate = days + "d ago";
+          }
+          else if (hours > 0){
+              $rootScope.posts[i].publishedDate = hours + "h ago";
+          }
+          else if (mins > 0){
+              $rootScope.posts[i].publishedDate = mins + "m ago";
+          }
+          else {
+              $rootScope.posts[i].publishedDate = "Just posted";
+          }
+      }
+
     })
   }
 
@@ -251,9 +361,66 @@ angular.module('starter.controllers', [])
   else if ($stateParams.playlistId == 9){
     url = "http://www.sbnation.com/rss/current";
   }
-  // else if ($stateParams.playlistId == 9){
-  //   url = "http://www.sbnation.com/rss/current";
-  // }
+  else if ($stateParams.playlistId == 10){
+    url = "http://www.azcardinals.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 11){
+    url = "http://www.atlantafalcons.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 12){
+    url = "http://www.baltimoreravens.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 13){
+    url = "http://www.buffalobills.com/cda-web/rss-module.htm?tagName=LatestHeadlines";
+  }
+  else if ($stateParams.playlistId == 14){
+    url = "http://www.panthers.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 15){
+    url = "http://feeds.feedburner.com/chicagobears/news";
+  }
+  else if ($stateParams.playlistId == 16){
+    url = "http://www.bengals.com/cda-web/rss-module.htm?tagName=News%20Stories";
+  }
+  else if ($stateParams.playlistId == 17){
+    url = "http://www.clevelandbrowns.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 18){
+    url = "http://www.dallascowboys.com/rss/article";
+  }
+  else if ($stateParams.playlistId == 19){
+    url = "http://www.denverbroncos.com/cda-web/rss-module.htm?tagName=News&view=mobile";
+  }
+  else if ($stateParams.playlistId == 20){
+    url = "http://www.detroitlions.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 21){
+    url = "http://www.packers.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 22){
+    url = "http://www.houstontexans.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 23){
+    url = "http://www.colts.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 24){
+    url = "http://prod.www.jaguars.clubs.nfl.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 25){
+    url = "http://www.chiefs.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 26){
+    url = "http://www.therams.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 27){
+    url = "http://www.miamidolphins.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 28){
+    url = "http://www.vikings.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 29){
+    url = "http://www.patriots.com/rss/article/mobile/all/News%20-%20Mobile";
+  }
 
   $scope.getRssFeed(url);
 

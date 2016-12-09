@@ -23,7 +23,7 @@
           <img src="{{images[$index]}}" class="article-image"></img>
           <div class="article-text" ng-bind-html="post.title"></div>
           <div class="time-text">{{post.publishedDate}}</div>
-          
+          <div class="author-text" ng-bind-html="post.author" ng-if="post.author!=''"></div>
         </div>
       </ion-item>
     </ion-list>
