@@ -148,7 +148,7 @@ angular.module('starter.controllers', [])
       var insteadposts = res.responseData.feed.entries;
       for(var ii=0; ii<insteadposts.length; ii++){
           if (insteadposts[ii].content.includes("nfl") || insteadposts[ii].link.includes("nfl") || insteadposts[ii].title.includes("nfl") 
-              || $stateParams.playlistId>=10){
+              || $stateParams.playlistId>=10 || $stateParams.playlistId==3 || $stateParams.playlistId==8){
               $rootScope.posts.push(insteadposts[ii]);
               if ($stateParams.playlistId == 0){
                   $scope.images.push("img/sources/1.png");
@@ -281,6 +281,49 @@ angular.module('starter.controllers', [])
                   else{
                     $scope.images.push("img/sources/30.png");
                   }
+              }
+              else if ($stateParams.playlistId == 30){
+                  $scope.images.push("img/sources/31.png");
+              }
+              else if ($stateParams.playlistId == 31){
+                  $scope.images.push("img/sources/32.png");
+              }
+              else if ($stateParams.playlistId == 32){
+                  $scope.images.push("img/sources/33.png");
+              }
+              else if ($stateParams.playlistId == 33){
+                  $scope.images.push("img/sources/34.png");
+              }
+              else if ($stateParams.playlistId == 34){
+                  $scope.images.push("img/sources/35.png");
+              }
+              else if ($stateParams.playlistId == 35){
+                  $scope.images.push("img/sources/36.png");
+              }
+              else if ($stateParams.playlistId == 36){
+                  $scope.images.push("img/sources/37.png");
+              }
+              else if ($stateParams.playlistId == 37){
+                  $scope.images.push("img/sources/38.png");
+              }
+              else if ($stateParams.playlistId ==38){
+
+                  if (insteadposts[ii].mediaGroups != null){
+                    console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                  }
+                  else{
+                    $scope.images.push("img/sources/39.png");
+                  }
+              }
+              else if ($stateParams.playlistId == 39){
+                  $scope.images.push("img/sources/40.png");
+              }
+              else if ($stateParams.playlistId == 40){
+                  $scope.images.push("img/sources/41.png");
+              }
+              else if ($stateParams.playlistId == 41){
+                  $scope.images.push("img/sources/42.png");
               }
           }
       }
@@ -420,6 +463,42 @@ angular.module('starter.controllers', [])
   }
   else if ($stateParams.playlistId == 29){
     url = "http://www.patriots.com/rss/article/mobile/all/News%20-%20Mobile";
+  }
+  else if ($stateParams.playlistId == 30){
+    url = "http://www.neworleanssaints.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 31){
+    url = "http://www.giants.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 32){
+    url = "http://www.newyorkjets.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 33){
+    url = "http://www.raiders.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 34){
+    url = "http://www.philadelphiaeagles.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 35){
+    url = "http://www.steelers.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 36){
+    url = "http://www.cbs8.com/Global/category.asp?clienttype=rss_img&C=154786";
+  }
+  else if ($stateParams.playlistId == 37){
+    url = "http://www.49ers.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 38){
+    url = "http://www.seahawks.com/rss/article";
+  }
+  else if ($stateParams.playlistId == 39){
+    url = "http://www.buccaneers.com/cda-web/rss-module.htm?tagName=News";
+  }
+  else if ($stateParams.playlistId == 40){
+    url = "http://www.titansonline.com/cda-web/rss-module.htm?tagName=TeamNews";
+  }
+  else if ($stateParams.playlistId == 41){
+    url = "http://www.redskins.com/cda-web/rss-module.htm?tagName=News";
   }
 
   $scope.getRssFeed(url);
