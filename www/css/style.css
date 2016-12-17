@@ -110,6 +110,10 @@
 	vertical-align: middle; margin-right: 13px; width : 30%;
 }
 
+.twitter-image{
+	position:absolute; width : 25px; height : 25px; left: calc(30% - 25px); bottom : 10%; border-radius : 12.5px;
+}
+
 .arrow-image{
 	height: 3vh; position: absolute; top: 2.5vh; right: 5%;
 }

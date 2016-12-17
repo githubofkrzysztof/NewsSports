@@ -18,12 +18,22 @@
     <ion-list >
       <!-- <ion-item ng-repeat="post in posts" class="article-list-style" href="#/app/article-preview/{{$index}}" > -->
       <ion-item ng-repeat="post in posts | filter:searchQuery" class="article-list-style" href="#" ng-click="openbrowser({{$index}})">
-        <div class="card card-source">
+        <div class="card card-source" ng-if="feed_type">
 
           <img src="{{images[$index]}}" class="article-image"></img>
           <div class="article-text" ng-bind-html="post.title"></div>
           <div class="time-text">{{post.publishedDate}}</div>
           <div class="author-text" ng-bind-html="post.author" ng-if="post.author!=''"></div>
+
+        </div>
+        <div class="card card-source" ng-if="!feed_type">
+
+          <img src="{{images[$index]}}" class="article-image"></img>
+          <div class="article-text" ng-bind-html="post.text"></div>
+          <!-- <div class="time-text">{{post.created_at | formatTwitterDate}}</div> -->
+          <div class="time-text">{{post.created_at}}</div>
+          <div class="author-text" ng-bind-html="post.user.name" ng-if="post.user.name!=''"></div>
+
         </div>
       </ion-item>
     </ion-list>
@@ -41,3 +51,23 @@
 	</div>
   </div> --> 
 </ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
