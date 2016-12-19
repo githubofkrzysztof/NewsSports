@@ -207,7 +207,7 @@ angular.module('starter.controllers', [])
 
   $scope.alert_flag = false;
   $scope.title = $rootScope.playlists[$stateParams.playlistId].title;
-  $scope.feed_type = true;
+  $rootScope.feed_type = true;
   //alert($stateParams.playlistId);
   
   $scope.getTwitterFeed = function (url){
@@ -218,7 +218,7 @@ angular.module('starter.controllers', [])
     TwitterREST.sync(url).then(function(tweets){
           console.log(tweets);
           $scope.tweets = tweets.statuses;
-          $scope.feed_type = false;
+          $rootScope.feed_type = false;
           $rootScope.posts = $scope.tweets;
 
           for (var j=0;j<$rootScope.posts.length;j++){
@@ -303,6 +303,30 @@ angular.module('starter.controllers', [])
             else if ($stateParams.playlistId == 60){
                 $scope.images.push("img/sources/61.png");
             }
+            else if ($stateParams.playlistId == 62){
+                $scope.images.push("img/sources/63.png");
+            }
+            else if ($stateParams.playlistId == 64){
+                $scope.images.push("img/sources/65.png");
+            }
+            else if ($stateParams.playlistId == 66){
+                $scope.images.push("img/sources/67.png");
+            }
+            else if ($stateParams.playlistId == 68){
+                $scope.images.push("img/sources/69.png");
+            }
+            else if ($stateParams.playlistId == 70){
+                $scope.images.push("img/sources/71.png");
+            }
+            else if ($stateParams.playlistId == 72){
+                $scope.images.push("img/sources/73.png");
+            }
+            else if ($stateParams.playlistId == 74){
+                $scope.images.push("img/sources/75.png");
+            }
+            else if ($stateParams.playlistId == 76){
+                $scope.images.push("img/sources/77.png");
+            }
           }
 
 
@@ -334,7 +358,7 @@ angular.module('starter.controllers', [])
 
   $scope.getRssFeed = function (url){
 
-    $scope.feed_type = true;
+    $rootScope.feed_type = true;
     $rootScope.posts=[];
     $scope.images=[];
     
@@ -819,40 +843,72 @@ angular.module('starter.controllers', [])
     url = "http://www.philadelphiaeagles.com/cda-web/rss-module.htm?tagName=News";
     $scope.getRssFeed(url);
   }
+  else if ($stateParams.playlistId == 62){
+    url = "Eagles";
+    $scope.getTwitterFeed(url);
+  }
   else if ($stateParams.playlistId == 63){
     url = "http://www.steelers.com/cda-web/rss-module.htm?tagName=News";
     $scope.getRssFeed(url);
+  }
+  else if ($stateParams.playlistId == 64){
+    url = "steelers";
+    $scope.getTwitterFeed(url);
   }
   else if ($stateParams.playlistId == 65){
     url = "http://www.cbs8.com/Global/category.asp?clienttype=rss_img&C=154786";
     $scope.getRssFeed(url);
   }
+  else if ($stateParams.playlistId == 66){
+    url = "Chargers";
+    $scope.getTwitterFeed(url);
+  }
   else if ($stateParams.playlistId == 67){
     url = "http://www.49ers.com/cda-web/rss-module.htm?tagName=News";
     $scope.getRssFeed(url);
+  }
+  else if ($stateParams.playlistId == 68){
+    url = "49ers";
+    $scope.getTwitterFeed(url);
   }
   else if ($stateParams.playlistId == 69){
     url = "http://www.seahawks.com/rss/article";
     $scope.getRssFeed(url);
   }
+  else if ($stateParams.playlistId == 70){
+    url = "Seahawks";
+    $scope.getTwitterFeed(url);
+  }
   else if ($stateParams.playlistId == 71){
     url = "http://www.buccaneers.com/cda-web/rss-module.htm?tagName=News";
     $scope.getRssFeed(url);
+  }
+  else if ($stateParams.playlistId == 72){
+    url = "TBBuccaneers";
+    $scope.getTwitterFeed(url);
   }
   else if ($stateParams.playlistId == 73){
     url = "http://www.titansonline.com/cda-web/rss-module.htm?tagName=TeamNews";
     $scope.getRssFeed(url);
   }
+  else if ($stateParams.playlistId == 74){
+    url = "Titans";
+    $scope.getTwitterFeed(url);
+  }
   else if ($stateParams.playlistId == 75){
     url = "http://www.redskins.com/cda-web/rss-module.htm?tagName=News";
     $scope.getRssFeed(url);
+  }
+  else if ($stateParams.playlistId == 76){
+    url = "Redskins";
+    $scope.getTwitterFeed(url);
   }
 
   $scope.openbrowser = function (index) {
     
 
     var link;
-    if ($scope.feed_type == true){
+    if ($rootScope.feed_type == true){
       link = $rootScope.posts[index].link
     }
     else {
@@ -877,7 +933,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.doRefresh = function(){
-    if ($scope.feed_type == true){
+    if ($rootScope.feed_type == true){
       $scope.getRssFeed(url);
     }
     else{
