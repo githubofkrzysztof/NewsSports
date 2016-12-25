@@ -1,0 +1,449 @@
+/* Empty. Add your own CSS if you like */
+
+/*  Menu Screen  */
+
+.background{
+	
+}
+
+.menu-style{	
+	background-color : rgba(34, 34, 34, 0.9);
+	background-size: auto 100%; background-position : right;
+}
+
+.logo-icon{
+	background-image: url('../img/logo.png'); color : white;
+	background-size : 100% 100%; background-position:center; height : 200px; width : 100%;
+	padding-top: 175px; text-align: left; font-size: 15px; font-style: italic; padding-left : 10px;
+}
+.custom-menu .item-content{
+	background-size: 100% 100%; background-color: transparent;
+	height: 50px; width: 290px; margin: 2px 0px;
+}
+
+.custom-menu .item-content.activated{
+	background-color: transparent; !important;
+}
+
+.custommenu-list{
+	padding: 0 15px; background: transparent;
+}
+
+.menu-text{
+	margin-left : 15px;
+}
+
+.right-arrow-menu-icon{
+	float : right; margin-top : 0px; font-size: 12px;
+}
+.menu-news-style .item-content{
+	/*background-image : url('../img/menu_news.png'); */
+	color : white; font-size : 20px; margin-top : 5vh; 
+}
+
+.menu-standings-style .item-content{
+	/*background-image : url('../img/menu_standings.png'); */
+	color : white; font-size : 20px;
+}
+
+.menu-scores-style .item-content{
+	/*background-image : url('../img/menu_more.png'); */
+	color:white; font-size : 20px;
+}
+
+.menu-share-style .item-content{
+	/*background-image : url('../img/menu_more.png'); */
+	color : white; font-size : 20px;
+}
+
+.menu-feedback-style .item-content{
+	/*background-image : url('../img/menu_more.png'); */
+	color : white; font-size : 20px;
+}
+
+.menu-removeads-style .item-content{
+	/*background-image : url('../img/menu_more.png'); */
+	color : white; font-size : 20px;
+}
+
+.item{
+	border : none;
+}
+
+.menu-position{
+	margin-top : 0vh;
+}
+
+/*  News Feeds Screen  */
+.bar-header {
+	background-image : url('../img/header.png') !important;
+	background-size : 100% 100% !important;
+}
+
+.title{
+	color : white !important;
+	font-weight: bold !important;
+}
+
+.menu-button{
+	background-color : transparent !important; border : none !important;
+	/*background-image : url('../img/menu_icon.png') !important;*/
+	/*width : 65px; background-size : 100% 100%;*/
+	width: 30px; color : white; font-size : 30px; margin-left: 5px; text-align: center;
+}
+
+.more-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/more_icon.png') !important;
+	width : 65px; background-size : 100% 100%;
+}
+
+.news-list-style .item-content{
+	/*background-image : url('../img/cell.png'); padding : 10px;*/
+	height: 9vh; background-color : rgb(36,36,36); padding: 5px 40px 5px 20px !important;
+	color: white; position: relative; font-weight: 800; font-size : 2.2vh;
+	border-color: rgb(80,80,80); border-width : 1px 1px; border-style : solid; 
+}
+
+.cell-image{
+	height: 100%; /*border-color: black; border-width : 2px; border-style : inset; */
+	vertical-align: middle; margin-right: 13px; width : 30%;
+}
+
+.twitter-image{
+	position:absolute; width : 25px; height : 25px; left: calc(30% - 25px); bottom : 10%; border-radius : 12.5px;
+}
+
+.arrow-image{
+	height: 3vh; position: absolute; top: 2.5vh; right: 5%;
+}
+
+.more-options-container{
+	position : relative; width : 100%; height: 100%; top : 0; left : 0; 
+	background-color : rgba(255, 255, 255, 0.8); z-index : 10; 
+}
+
+.more-options-subcontainer{
+	position : absolute; width : 80vw;  top: 30vh; left : 10vw; 
+	background-image : url('../img/more_options_background.png');
+	background-size : 100% 100%; color : white; opacity: 0.85;
+}
+
+.more-options-text{
+	color:white; text-align: center; margin-top: 3vh !important;
+}
+
+.refresh-button{
+	 width:40%; background-color: transparent; margin-left : 30%; margin-top : 1vh;
+}
+
+.mark-button{
+	width:70%; margin-left : 15%;
+}
+
+.cancel-button{
+	width:50%; margin-left : 25%; margin-bottom : 20px;
+}
+
+/*  News Source Screen  */
+
+.bar-stable .button.button-clear{
+	color : white;
+}
+.custom-back-button{
+	background-image : url('../img/back.png') !important;
+	background-size: 100% 100% !important; width : 50px !important;
+}
+
+.custom-back-button i, .custom-back-button span {
+	display: none !important;
+}
+
+.search-container{
+	position : relative; height : 6vh; width: 100%; background-color : rgb(36, 36, 36);
+}
+
+.search{
+	position:absolute; height: 4vh; width: calc(100% - 20px); margin-left:10px; margin-top : 1vh; color : white;
+	border-radius: 3px; background-color : rgb(80, 80, 80);
+}
+
+input[type="search"]{
+	color : white;
+}
+
+.source-name{
+	background-image : url('../img/cell.png'); background-size: cover; height : 4vh ; color : white;
+	 padding-left:5%; font-size:2.5vh; display: flex; align-items: center;
+}
+
+.article-list-style .item-content{
+	background-color : rgb(36, 36, 36); padding: 0px;
+}
+
+.card-source{
+	margin: 5px 10px 5px 10px; width: calc(100% - 20px); height: 35vh; padding: 0px; border-radius: 7px;
+	border-color: rgb(36, 36, 36);
+	background-color: rgb(36, 36, 36);
+	/*background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);*/
+	/*display: inline-block;*/
+}
+
+.article-text{
+	color : white; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%); 
+	position: absolute; bottom : 5px; font-size: 2.5vh; height: 25%; width: calc(100% - 20px);
+	white-space: normal; line-height: 1.3em; padding: 0px 5px 5px 15px;
+	border-radius: 7px;
+	border-color: rgb(36, 36, 36);
+}
+
+.time-text{
+	color : white; background-color : rgb(36,36,36); position : absolute; top : 5px; right : 5px; font-size : 2vh;
+	padding : 1px 5px; border-radius: 7px; margin-right : 20px; margin-top : 10px;
+}
+
+.author-text{
+	color : white; background-color : rgb(36,36,36); position : absolute; top : 30px; right : 5px; font-size : 2vh;
+	padding : 1px 5px; border-radius: 7px; margin-right : 20px; margin-top : 10px;
+}
+
+.article-image{
+	width: 100%; height: 100%; padding: 0px !important; /*z-index: -1; display: block; position: relative;*/
+}
+
+.item-content:hover{
+	background-color: rgb(80, 80, 80);
+}
+
+/*.item-content:active{
+	background-color: rgb(80, 80, 80) !important;
+}*/
+
+.item-content.activated{
+	background-color: rgb(80, 80, 80) !important;
+}
+
+/*  Article Preview Screen  */
+
+.up-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/up.png') !important;
+	width : 37px; background-size : 100% 100%;
+}
+
+.down-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/down.png') !important;
+	width : 37px; background-size : 100% 100%;
+}
+
+.article-preview-image{
+	width : 100%; height : 50vh; background-color: rgb(36, 36, 36);
+}
+
+.article-preview-title{
+	background-image: url('../img/title_background.png'); margin-top: -4px;
+	height: 8vh; font-size:3vh; text-align:center; padding-top:2.5vh; color : white;
+	padding-left : 5vw; padding-right:5vw; text-overflow: hidden; background-size:100% 100%;
+}
+
+.article-description{
+	background-image : url('../img/description_background.png'); background-size: 100% 100%;
+	min-height : calc(55vh - 18vw - 60px); color : white; text-align: center; padding-top: 2vh; padding-left: 3vh; 
+	padding-right:3vh; font-size : 2.5vh; line-height: 1.5em; margin-top: -5px;
+}
+
+.read-button{
+	width : 100%; height: 18vw; background-image : url('../img/read_button.png');
+	background-size : 100% 100%; position:absolute; bottom:-5px;
+}
+
+.space{
+	width:100%; height: 20vw;
+}
+/*  Article Screen  */
+
+.article-content{
+	height : calc(100vh - 16vw - 60px); background-image : url('../img/description_background.png'); 
+	background-size : 100% 100%; width: 100%;
+}
+
+.bottom-bar{
+	height : 16vw; background-image : url('../img/header.png'); 
+	background-size : 100% 100%; margin-top: -5px;
+}
+
+.left-button{
+	width : 7vw;  margin-left : 5vw; vertical-align: middle;
+}
+
+.right-button{
+	width : 7vw;  margin-left : 1vw; vertical-align: middle;
+}
+
+.reload-button{
+	width : 7vw;  margin-left : 15vw; vertical-align: middle;
+}
+
+.open-safari-button{
+	width : 8vw;  margin-left : 15vw; vertical-align: middle;
+}
+
+.more-settings-button{
+	width : 7vw; margin-top : 6.5vw; margin-left : 15vw; 
+}
+
+/* Standings Page Screen */
+.edit-button{
+	background-color : transparent !important; border : none !important;
+	background-image : url('../img/edit.png') !important;
+	width : 65px; background-size : 100% 100%;
+}
+
+.standing-content{
+	height : calc(100vh - 124px); background-color : rgb(21, 21, 21);
+}
+
+.banner{
+	width : 100%; position: fixed; height: 60px; bottom: 0px;
+}
+
+/*.standing-list-container .list{
+	height : calc(100vh - 124px); overflow-y: scroll; overflow-x: hidden;
+}*/
+/*.standing-list-container{
+
+	height : calc(100vh - 124px); position: relative; overflow: visible;
+}*/
+.standing-list-style{
+	padding : 0px; background-color: rgb(36,36,36); border-radius : 10px; 
+	color: white; position: relative; font-weight: 800; font-size : 2.2vh; text-align: center; 
+}
+
+.col{
+	height: 5vh; padding-top : 1.6vh;
+}
+
+.custom-header{
+	font-size: 2.5vh; font-weight: 800; background-color: rgb(46, 46, 46); 
+}
+
+.row.table-body{
+	border-bottom: solid; border-width: 2px; border-color : rgb(46, 46, 46);
+}
+/* Live Scores Screen */
+
+.livescore-style{
+	padding : 0px;
+}
+
+.date-livescore{
+	background-image : url('../img/title_background.png'); width : 100%; background-size : 100% 100%; 
+	color:white; text-align: center; font-size : 3vh; padding-top : 3vh; padding-bottom : 3vh;
+}
+
+.result-livescore {
+	background-image : url('../img/description_background.png') !important; width : 100%; background-size : 100% auto;
+	padding-left : 0px; padding-right: 0px; font-size : 2.2vh;
+}
+
+.team1-text{
+	color : white; float : left; width : 40vw; text-align: center;
+}
+
+.score1-text{
+	color : white; float : left; width : 9vw; text-align: center;
+}
+
+.vs-text{
+	color : white; float : left; width: 2vw; text-align: center;
+}
+
+.score2-text{
+	color : white; float : left; width : 9vw; text-align: center;
+}
+
+.team2-text{
+	color : white; float : left; width : 40vw; text-align: center;
+}
+
+
+/* Manage Feeds */
+
+.save-button{
+	background-color : transparent !important; border : none !important;
+	margin-top : 6px;
+	width: 50px; color : white; font-size : 18px; margin-left: 5px; text-align: center;
+}
+
+.more-option-icon{
+	color : white; font-size : 30px; margin-left : 10px; margin-right : 10px;
+}
+.card-manage {
+	width: 25vw; margin: 4vw 4vw; height: 25vw; float: left; display: flex; justify-content: center; 
+	align-items: center;
+	position: relative; border-radius: 10px; border-color : rgb(36,36,36); 
+}
+
+.sources-text{
+	color : white; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 100%); 
+	font-size: 2vh; position: absolute; bottom : 0px; left : 0; text-align : center;
+	width: 100%; height: auto; padding: 5px 5px;
+}
+
+.check-box{
+	position: absolute; top :0px; right : -30px; background-color: transparent;
+}
+
+.manage-content{
+	display: inline-block; width: 100%; background-color: rgb(36,36,36);
+}
+.manage-image{
+	width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+	.card-manage {
+		width: 40vw; margin: 5vw 5vw; height: 40vw; float: left;
+	}
+}
+
+
+/*The first method for iFrame*/
+
+iframe, object, embed{
+	max-width: 100% !important; overflow : scroll !important; -webkit-overflow-scrolling:touch !important;
+}
+
+/*The second method for iFrame*/
+
+/*.myIframe {
+	position: relative; padding-bottom: 65.25%; padding-top : 30px; height : 0;
+	overflow : auto; -webkit-overflow-scrolling:touch;
+	border: solid black 1px;
+}
+
+.myIframe iframe{
+	position: absolute; top: 0; left: 0; width: 100%; height : 100%;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

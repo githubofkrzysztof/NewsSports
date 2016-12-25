@@ -1,44 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // // Form data for the login modal
-  // $scope.loginData = {};
-
-  // // Create the login modal that we will use later
-  // $ionicModal.fromTemplateUrl('templates/login.html', {
-  //   scope: $scope
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  // });
-
-  // // Triggered in the login modal to close it
-  // $scope.closeLogin = function() {
-  //   $scope.modal.hide();
-  // };
-
-  // // Open the login modal
-  // $scope.login = function() {
-  //   $scope.modal.show();
-  // };
-
-  // // Perform the login action when the user submits the login form
-  // $scope.doLogin = function() {
-  //   console.log('Doing login', $scope.loginData);
-
-  //   // Simulate a login delay. Remove this and replace with your login
-  //   // code if using a login system
-  //   $timeout(function() {
-  //     $scope.closeLogin();
-  //   }, 1000);
-  // };
 
 
 })
@@ -48,6 +10,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NewsCtrl', function($scope, $ionicActionSheet, $timeout, $rootScope, TwitterREST) {
+  
+  
 
   $scope.alert_flag = false;
   $rootScope.playlists = [
@@ -190,30 +154,25 @@ angular.module('starter.controllers', [])
         return true;
       }
     });
-
-    // $timeout(function(){
-    //   hideSheet();
-    // }, 1000);
   };
-
-  // $scope.cancelOptions = function(){
-  //   $scope.alert_flag = false;
-  // }
 })
 
 .controller('NewsSourceCtrl', function($scope, $stateParams, $ionicActionSheet, 
                   $ionicScrollDelegate, $timeout, $rootScope, $http, $cordovaInAppBrowser, TwitterREST) {
 
-
+  $scope.showLoadingFlag = true;
+  $timeout(function(){
+    $scope.showLoadingFlag = false;
+  }, 2000);
+  
   $scope.alert_flag = false;
   $scope.title = $rootScope.playlists[$stateParams.playlistId].title;
   $rootScope.feed_type = true;
-  //alert($stateParams.playlistId);
   
   $scope.getTwitterFeed = function (url){
 
     $rootScope.posts=[];
-    $scope.images=[];
+    $rootScope.images=[];
 
     TwitterREST.sync(url).then(function(tweets){
           console.log(tweets);
@@ -222,110 +181,114 @@ angular.module('starter.controllers', [])
           $rootScope.posts = $scope.tweets;
 
           for (var j=0;j<$rootScope.posts.length;j++){
-            if ($stateParams.playlistId == 1){
-              $scope.images.push("img/sources/2.png");
+            if ($rootScope.posts[j].extended_entities != undefined){
+              console.log($rootScope.posts[j].extended_entities.media[0].media_url);
+              $rootScope.images.push($rootScope.posts[j].extended_entities.media[0].media_url);
+            }
+            else if ($stateParams.playlistId == 1){
+              $rootScope.images.push("img/sources/2.png");
             }
             else if ($stateParams.playlistId == 8){
-              $scope.images.push("img/sources/9.png");
+              $rootScope.images.push("img/sources/9.png");
             }
             else if ($stateParams.playlistId == 10){
-              $scope.images.push("img/sources/11.png");
+              $rootScope.images.push("img/sources/11.png");
             }
             else if ($stateParams.playlistId == 14){
-                $scope.images.push("img/sources/15.png");
+                $rootScope.images.push("img/sources/15.png");
             }
             else if ($stateParams.playlistId == 16){
-                $scope.images.push("img/sources/17.png");
+                $rootScope.images.push("img/sources/17.png");
             }
             else if ($stateParams.playlistId == 18){
-                $scope.images.push("img/sources/19.png");
+                $rootScope.images.push("img/sources/19.png");
             }
             else if ($stateParams.playlistId == 20){
-                $scope.images.push("img/sources/21.png");
+                $rootScope.images.push("img/sources/21.png");
             }
             else if ($stateParams.playlistId == 22){
-                $scope.images.push("img/sources/23.png");
+                $rootScope.images.push("img/sources/23.png");
             }
             else if ($stateParams.playlistId == 24){
-                $scope.images.push("img/sources/25.png");
+                $rootScope.images.push("img/sources/25.png");
             }
             else if ($stateParams.playlistId == 26){
-                $scope.images.push("img/sources/27.png");
+                $rootScope.images.push("img/sources/27.png");
             }
             else if ($stateParams.playlistId == 28){
-                $scope.images.push("img/sources/29.png");
+                $rootScope.images.push("img/sources/29.png");
             }
             else if ($stateParams.playlistId == 30){
-                $scope.images.push("img/sources/31.png");
+                $rootScope.images.push("img/sources/31.png");
             }
             else if ($stateParams.playlistId == 32){
-                $scope.images.push("img/sources/33.png");
+                $rootScope.images.push("img/sources/33.png");
             }
             else if ($stateParams.playlistId == 34){
-                $scope.images.push("img/sources/35.png");
+                $rootScope.images.push("img/sources/35.png");
             }
             else if ($stateParams.playlistId == 36){
-                $scope.images.push("img/sources/37.png");
+                $rootScope.images.push("img/sources/37.png");
             }
             else if ($stateParams.playlistId == 38){
-                $scope.images.push("img/sources/39.png");
+                $rootScope.images.push("img/sources/39.png");
             }
             else if ($stateParams.playlistId == 40){
-                $scope.images.push("img/sources/41.png");
+                $rootScope.images.push("img/sources/41.png");
             }
             else if ($stateParams.playlistId == 42){
-                $scope.images.push("img/sources/43.png");
+                $rootScope.images.push("img/sources/43.png");
             }
             else if ($stateParams.playlistId == 44){
-                $scope.images.push("img/sources/45.png");
+                $rootScope.images.push("img/sources/45.png");
             }
             else if ($stateParams.playlistId == 46){
-                $scope.images.push("img/sources/47.png");
+                $rootScope.images.push("img/sources/47.png");
             }
             else if ($stateParams.playlistId == 48){
-                $scope.images.push("img/sources/49.png");
+                $rootScope.images.push("img/sources/49.png");
             }
             else if ($stateParams.playlistId == 50){
-                $scope.images.push("img/sources/51.png");
+                $rootScope.images.push("img/sources/51.png");
             }
             else if ($stateParams.playlistId == 52){
-                $scope.images.push("img/sources/53.png");
+                $rootScope.images.push("img/sources/53.png");
             }
             else if ($stateParams.playlistId == 54){
-                $scope.images.push("img/sources/55.png");
+                $rootScope.images.push("img/sources/55.png");
             }
             else if ($stateParams.playlistId == 56){
-                $scope.images.push("img/sources/57.png");
+                $rootScope.images.push("img/sources/57.png");
             }
             else if ($stateParams.playlistId == 58){
-                $scope.images.push("img/sources/59.png");
+                $rootScope.images.push("img/sources/59.png");
             }
             else if ($stateParams.playlistId == 60){
-                $scope.images.push("img/sources/61.png");
+                $rootScope.images.push("img/sources/61.png");
             }
             else if ($stateParams.playlistId == 62){
-                $scope.images.push("img/sources/63.png");
+                $rootScope.images.push("img/sources/63.png");
             }
             else if ($stateParams.playlistId == 64){
-                $scope.images.push("img/sources/65.png");
+                $rootScope.images.push("img/sources/65.png");
             }
             else if ($stateParams.playlistId == 66){
-                $scope.images.push("img/sources/67.png");
+                $rootScope.images.push("img/sources/67.png");
             }
             else if ($stateParams.playlistId == 68){
-                $scope.images.push("img/sources/69.png");
+                $rootScope.images.push("img/sources/69.png");
             }
             else if ($stateParams.playlistId == 70){
-                $scope.images.push("img/sources/71.png");
+                $rootScope.images.push("img/sources/71.png");
             }
             else if ($stateParams.playlistId == 72){
-                $scope.images.push("img/sources/73.png");
+                $rootScope.images.push("img/sources/73.png");
             }
             else if ($stateParams.playlistId == 74){
-                $scope.images.push("img/sources/75.png");
+                $rootScope.images.push("img/sources/75.png");
             }
             else if ($stateParams.playlistId == 76){
-                $scope.images.push("img/sources/77.png");
+                $rootScope.images.push("img/sources/77.png");
             }
           }
 
@@ -360,11 +323,10 @@ angular.module('starter.controllers', [])
 
     $rootScope.feed_type = true;
     $rootScope.posts=[];
-    $scope.images=[];
+    $rootScope.images=[];
     
      var google_converter="http://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=50&callback=JSON_CALLBACK&q=";
      var request = $http.jsonp(google_converter + encodeURIComponent(url));
-    //var request = $http.get('https://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent(url));
     request.success(function(res){
       var insteadposts = res.responseData.feed.entries;
       for(var ii=0; ii<insteadposts.length; ii++){
@@ -372,50 +334,50 @@ angular.module('starter.controllers', [])
               || $stateParams.playlistId>=10 || $stateParams.playlistId==3 || $stateParams.playlistId==8){
               $rootScope.posts.push(insteadposts[ii]);
               if ($stateParams.playlistId == 0){
-                  $scope.images.push("img/sources/1.png");
+                  $rootScope.images.push("img/sources/1.png");
               }
               else if ($stateParams.playlistId == 2){
-                  $scope.images.push("img/sources/3.png");
+                  $rootScope.images.push("img/sources/3.png");
               }
               else if($stateParams.playlistId ==3){
 
                   if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/4.png");
+                    $rootScope.images.push("img/sources/4.png");
                   }
               }
               else if($stateParams.playlistId == 4){
                   if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/5.png");
+                    $rootScope.images.push("img/sources/5.png");
                   }
               }
               else if ($stateParams.playlistId == 5){
-                  $scope.images.push('img/sources/6.png');
+                  $rootScope.images.push('img/sources/6.png');
               }
               else if ($stateParams.playlistId == 6){
                 if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/7.png");
+                    $rootScope.images.push("img/sources/7.png");
                   }
               }
               else if ($stateParams.playlistId == 7){
-                  $scope.images.push("img/sources/8.png");
+                  $rootScope.images.push("img/sources/8.png");
               }
               else if($stateParams.playlistId == 9){
-                  $scope.images.push("img/sources/10.png");
+                  $rootScope.images.push("img/sources/10.png");
               }
               else if ($stateParams.playlistId == 11){
-                  $scope.images.push("img/sources/12.png");
+                  $rootScope.images.push("img/sources/12.png");
               }
               else if ($stateParams.playlistId == 12){
                   
@@ -423,132 +385,131 @@ angular.module('starter.controllers', [])
                   var image_str = insteadposts[ii].content.substring(17, end_position-1);
                   if (image_str != null){
                     //alert(image_str);
-                    $scope.images.push(image_str);
+                    $rootScope.images.push(image_str);
                   }
                   else{
-                    $scope.images.push("/img/sources/13.png");
+                    $rootScope.images.push("/img/sources/13.png");
                   }
               }
               else if ($stateParams.playlistId == 13){
-                  $scope.images.push("img/sources/14.png");
+                  $rootScope.images.push("img/sources/14.png");
               }
               else if ($stateParams.playlistId == 15){
-                  $scope.images.push("img/sources/16.png");
+                  $rootScope.images.push("img/sources/16.png");
               }
               else if ($stateParams.playlistId == 17){
-                  $scope.images.push("img/sources/18.png");
+                  $rootScope.images.push("img/sources/18.png");
               }
               else if ($stateParams.playlistId == 19){
-                  $scope.images.push("img/sources/20.png");
+                  $rootScope.images.push("img/sources/20.png");
               }
               else if ($stateParams.playlistId == 21){
-                  $scope.images.push("img/sources/22.png");
+                  $rootScope.images.push("img/sources/22.png");
               }
               else if ($stateParams.playlistId == 23){
-                  $scope.images.push("img/sources/24.png");
+                  $rootScope.images.push("img/sources/24.png");
               }
               else if ($stateParams.playlistId == 25){
-                  $scope.images.push("img/sources/26.png");
+                  $rootScope.images.push("img/sources/26.png");
               }
               else if ($stateParams.playlistId == 27){
-                  $scope.images.push("img/sources/28.png");
+                  $rootScope.images.push("img/sources/28.png");
               }
               else if($stateParams.playlistId == 29){
 
                   if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/30.png");
+                    $rootScope.images.push("img/sources/30.png");
                   }
               }
               else if($stateParams.playlistId == 31){
-                  $scope.images.push("img/sources/32.png");
+                  $rootScope.images.push("img/sources/32.png");
               }
               else if ($stateParams.playlistId == 33){
-                  $scope.images.push("img/sources/34.png");
+                  $rootScope.images.push("img/sources/34.png");
               }
               else if ($stateParams.playlistId == 35){
-                  $scope.images.push("img/sources/36.png");
+                  $rootScope.images.push("img/sources/36.png");
               }
               else if ($stateParams.playlistId == 37){
-                  $scope.images.push("img/sources/38.png");
+                  $rootScope.images.push("img/sources/38.png");
               }
               else if ($stateParams.playlistId == 39){
-                  $scope.images.push("img/sources/40.png");
+                  $rootScope.images.push("img/sources/40.png");
               }
               else if ($stateParams.playlistId == 41){
-                  $scope.images.push("img/sources/42.png");
+                  $rootScope.images.push("img/sources/42.png");
               }
               else if ($stateParams.playlistId == 43){
-                  $scope.images.push("img/sources/44.png");
+                  $rootScope.images.push("img/sources/44.png");
               }
               else if ($stateParams.playlistId == 45){
-                  $scope.images.push("img/sources/46.png");
+                  $rootScope.images.push("img/sources/46.png");
               }
               else if ($stateParams.playlistId == 47){
-                  $scope.images.push("img/sources/48.png");
+                  $rootScope.images.push("img/sources/48.png");
               }
               else if ($stateParams.playlistId == 49){
-                  $scope.images.push("img/sources/50.png");
+                  $rootScope.images.push("img/sources/50.png");
               }
               else if ($stateParams.playlistId == 51){
 
                   if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/52.png");
+                    $rootScope.images.push("img/sources/52.png");
                   }
               }
               else if ($stateParams.playlistId == 53){
-                  $scope.images.push("img/sources/54.png");
+                  $rootScope.images.push("img/sources/54.png");
               }
               else if ($stateParams.playlistId == 55){
-                  $scope.images.push("img/sources/56.png");
+                  $rootScope.images.push("img/sources/56.png");
               }
               else if ($stateParams.playlistId == 57){
-                  $scope.images.push("img/sources/58.png");
+                  $rootScope.images.push("img/sources/58.png");
               }
               else if ($stateParams.playlistId == 59){
-                  $scope.images.push("img/sources/60.png");
+                  $rootScope.images.push("img/sources/60.png");
               }
               else if ($stateParams.playlistId == 61){
-                  $scope.images.push("img/sources/62.png");
+                  $rootScope.images.push("img/sources/62.png");
               }
               else if ($stateParams.playlistId == 63){
-                  $scope.images.push("img/sources/64.png");
+                  $rootScope.images.push("img/sources/64.png");
               }
               else if ($stateParams.playlistId == 65){
-                  $scope.images.push("img/sources/66.png");
+                  $rootScope.images.push("img/sources/66.png");
               }
               else if ($stateParams.playlistId == 67){
-                  $scope.images.push("img/sources/68.png");
+                  $rootScope.images.push("img/sources/68.png");
               }
               else if ($stateParams.playlistId == 69){
 
                   if (insteadposts[ii].mediaGroups != null){
                     console.log(insteadposts[ii].mediaGroups[0].contents[0].url);
-                    $scope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
+                    $rootScope.images.push(insteadposts[ii].mediaGroups[0].contents[0].url);
                   }
                   else{
-                    $scope.images.push("img/sources/70.png");
+                    $rootScope.images.push("img/sources/70.png");
                   }
               }
               else if ($stateParams.playlistId == 71){
-                  $scope.images.push("img/sources/72.png");
+                  $rootScope.images.push("img/sources/72.png");
               }
               else if ($stateParams.playlistId == 73){
-                  $scope.images.push("img/sources/74.png");
+                  $rootScope.images.push("img/sources/74.png");
               }
               else if ($stateParams.playlistId == 75){
-                  $scope.images.push("img/sources/76.png");
+                  $rootScope.images.push("img/sources/76.png");
               }
           }
       }
-      //$rootScope.posts=res.responseData.feed.entries;
       console.log($rootScope.posts);
 
       for (var i = 0; i<$rootScope.posts.length; i++){
@@ -591,7 +552,7 @@ angular.module('starter.controllers', [])
   }
 
   var url;
-  $scope.images=[];
+  $rootScope.images=[];
   // $scope.titles=[];
   // $scope.pubDates=[];
 
@@ -961,58 +922,126 @@ angular.module('starter.controllers', [])
         return true;
       }
     });
-
-    // $timeout(function(){
-    //   hideSheet();
-    // }, 1000);
   }
 
   $scope.cancelOptions = function(){
     $scope.alert_flag = false;
   }
 
-  $scope.articles = [
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...' , id: 1, source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 2 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 3 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 4 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 5 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 6 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 7 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 8 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 9 , source_id: 1},
-    { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 10 , source_id: 1}
-  ];
+  // $scope.articles = [
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...' , id: 1, source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 2 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 3 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 4 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 5 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 6 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 7 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 8 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 9 , source_id: 1},
+  //   { title: 'Jared Goff\'s high school coach says his former QB is ready to ...', id: 10 , source_id: 1}
+  // ];
 })
 
 .controller('ArticlePreviewCtrl', function($scope, $stateParams, $rootScope, $cordovaInAppBrowser, $sce) {
-    $scope.link = $sce.trustAsResourceUrl($rootScope.posts[$stateParams.articleId].link);
-    //$scope.link = $sce.trustAsResourceUrl("http://www.espn.com");
-    $scope.title = $rootScope.posts[$stateParams.articleId].title;
-    //alert($scope.link);
 
-     
-      // $cordovaInAppBrowser.open($scope.link, '_blank', 'toolbar=no')
+    var article_position;
+    article_position = $stateParams.articleId;
     
-      // .then(function(event) {
-      //    // success
-      // })
+
+    $scope.beforeArticle = function(){
+        
+        //alert(article_position);
+        if (article_position>0){
+          article_position--;
+          getPreviewArticle();
+        
+        }
+    }
+
+    var getPreviewArticle = function(){
+      if ($rootScope.feed_type == true){
+            $rootScope.article_link = $sce.trustAsResourceUrl($rootScope.posts[article_position].link);
+            //$scope.link = $sce.trustAsResourceUrl("http://www.espn.com");
+            $scope.title = $rootScope.posts[article_position].title;
+            $scope.time = $rootScope.posts[article_position].publishedDate;
+            $scope.author = $rootScope.posts[article_position].author;
+
+            if ($rootScope.posts[article_position].link.includes("sbnation")){
+              $scope.content = $rootScope.posts[article_position].contentSnippet;
+            }
+            else{
+              $scope.content = $rootScope.posts[article_position].content;
+            }
+            $scope.image = $rootScope.images[article_position];
+      }
+      else {
+            var position = $rootScope.posts[article_position].text.search("https://");
+            var linkk = $rootScope.posts[article_position].text.substring(position, position+23);
+            $rootScope.article_link = $sce.trustAsResourceUrl(linkk);
+            //$scope.link = $sce.trustAsResourceUrl("http://www.espn.com");
+            $scope.title = $rootScope.posts[article_position].text;
+            $scope.time = $rootScope.posts[article_position].created_at;
+            if ($rootScope.posts[article_position].retweeted_status != undefined){
+              $scope.author = $rootScope.posts[article_position].retweeted_status.user.name;
+            }
+            else{
+              $scope.author = $rootScope.posts[article_position].user.name;
+            }
+            
+            $scope.content = "";//$rootScope.posts[$stateParams.articleId].content;
+            $scope.image = $rootScope.images[article_position]; 
+      }
+    }
+
+    $scope.afterArticle = function(){
+        
+        if (article_position < $rootScope.posts.length-1){
+          article_position++;
+          getPreviewArticle();    
+        }
+      
+    }
+
     
-      // .catch(function(event) {
-      //    // error
-      // });
-   
+
+    $scope.openbrowser = function () {
+      
+      // // $cordovaInAppBrowser.open($rootScope.article_link, '_self', options)
+      
+       $scope.showLoadingFlag = true;
+       var options = {
+          location: 'no',
+          clearcache: 'yes',
+          toolbar: 'no'
+       };
+     $cordovaInAppBrowser.open($rootScope.article_link, '_self', options)
+    
+      .then(function(event) {
+          console.log("success+"+JSON.stringify(event));
+          $scope.showLoadingFlag = false;
+         // success
+      })
+    
+      .catch(function(event) {
+        $scope.showLoadingFlag = false;
+        console.log("success+"+JSON.stringify(event));
+         // error
+          // alert("failure"+event);
+      });
+    }
+
+    getPreviewArticle();   
 })
 
-.controller('ArticleCtrl', function($scope, $ionicActionSheet, $timeout) {
+.controller('ArticleCtrl', function($scope, $ionicActionSheet, $timeout, $rootScope) {
   
+  $scope.link = $rootScope.article_link;
   $scope.opensafari = function(url){
-    //alert("ss");
     var hideSheet=$ionicActionSheet.show({
       buttons: [
         {text: '<b>Open Safari</b>'}
       ],
-      //destructiveText: 'Delete',
+      
       titleText: 'Other Options',
       cancelText: 'Cancel',
       cancel: function(){
@@ -1026,9 +1055,6 @@ angular.module('starter.controllers', [])
       }
     });
 
-    // $timeout(function(){
-    //   hideSheet();
-    // }, 1000);
   };
 
 })
@@ -1105,10 +1131,6 @@ angular.module('starter.controllers', [])
         return true;
       }
     });
-
-    // $timeout(function(){
-    //   hideSheet();
-    // }, 1000);
   };
 });
 

@@ -1,13 +1,13 @@
 
-<ion-view view-title="{{title}}">
+<ion-view view-title="Preview">
 	<ion-nav-buttons side="right">
-        <button class="button up-button">
-        </button>
-        <button class="button down-button">
-        </button>
-
         
-    </ion-nav-buttons>
+        <i class="icon ion-arrow-left-b menu-button" ng-click="beforeArticle()">
+        </i>
+        <i class="icon ion-arrow-right-b menu-button" ng-click="afterArticle()">
+        </i>
+
+  </ion-nav-buttons>
 
 
   <ion-content>
@@ -20,18 +20,42 @@
       <iframe ng-src="{{link}}"></iframe>
     </div> -->
 
-
-  	<img src="img/article-image.jpg" class="article-preview-image"/>
-  	<div class="article-preview-title">
-  	Virginia dismisses Memphis...
-  	</div>
+    
+  	<img src="{{image}}" class="article-preview-image"/>
 
   	<div class="article-description">
-  		<p>4h ago</p>
-  		<p>Virginia has dismissed former Memphis standout Austin Nichols from its men's basketball program,
-  		 Cavaliers coach Tony Bennett announced Friday night.</p>
+      <p ng-bind-html="title"></p>
+  		<p>{{author}} {{time}}</p>
+  		<p ng-bind-html="content"></p>
+       <div class="space"></div>
   	</div>
-  	<a class="button read-button" href="#/app/article">
-  	</a>
+  	
   </ion-content>
+  <button class="button read-button" ng-click="openbrowser()">
+  </button>
 </ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

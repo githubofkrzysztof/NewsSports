@@ -1,9 +1,7 @@
 angular.module('filters', [])
 
 .filter('formatTwitterDate', function() {
-    /*
-        Calculates time ago
-    */
+
     return function(input) {
             var rightNow = new Date();
             var then = new Date(input);

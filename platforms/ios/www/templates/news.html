@@ -4,26 +4,15 @@
     </i>
   </ion-nav-buttons>
   <ion-content>
+    
     <ion-list>
       <ion-item class="news-list-style" ng-repeat="playlist in playlists" href="#/app/playlists/{{$index}}">
-        <img src="img/sources/{{playlist.id}}.png" class="cell-image"/>
+        <img src="img/sources/{{playlist.id}} copy.png" class="cell-image"/>
         <img src="img/sources/{{playlist.id}}-11.png" onerror="this.style.display='none'" class="twitter-image"/>
          {{playlist.title}}
         <i class="icon ion-chevron-right arrow-image"></i>
       </ion-item>
     </ion-list>
   </ion-content>
-
-  <!-- <div class="more-options-container" ng-if="alert_flag">
-	<div class="more-options-subcontainer">
-		<h2 class="more-options-text">More Options</h2>
-		<img src="img/refresh.png" class="refresh-button">
-        </img>
-        <img src="img/mark_all.png" class="mark-button">
-        </img>
-        <img src="img/cancel.png" class="cancel-button" ng-click="cancelOptions()">
-        </img>
-	</div>
-  </div>  -->
 </ion-view>
 
