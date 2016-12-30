@@ -1,136 +1,31 @@
 <ion-view view-title="Live Scores">
+
+  <ion-nav-buttons side="right">
+        <i class="icon ion-loop menu-button" ng-click="refresh()">
+        </i>
+    </ion-nav-buttons>
+
   <ion-content>
+
+    <ion-spinner icon="bubbles" ng-if="showLoadingFlag" class="show-loading-icon"></ion-spinner>
     <ion-list>
 
-          <ion-item class="livescore-style">
+          <ion-item class="livescore-style" ng-repeat="livedata in scoreData">
             <div class="date-livescore">
-            THU, NOV 17
+            {{livedata[0].game.date}}
             </div>
             <ion-list >
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
+              <ion-item class="result-livescore" ng-repeat="gamedata in livedata">
+                <div class="team1-text">{{gamedata.game.homeTeam.City}}&nbsp;{{gamedata.game.homeTeam.Name}}</div>
+                <div class="score1-text" ng-if="gamedata.isUnplayed==='true'">-</div>
+                <div class="score1-text" ng-if="gamedata.isCompleted==='true'">{{gamedata.homeScore}}</div>
+                <div class="score1-text" ng-if="gamedata.isInProgress==='true'">{{gamedata.homeScore}}(P)</div>
                 <div class="vs-text">:</div>
                 <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Ateletico Madrid</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">3</div>
-                <div class="team2-text">Real Madrid</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
+                <div class="team2-text">{{gamedata.game.awayTeam.City}}&nbsp;{{gamedata.game.awayTeam.Name}}</div>
               </ion-item>
             </ion-list>
           </ion-item>
-
-
-          <ion-item class="livescore-style">
-            <div class="date-livescore">
-            FRI, NOV 18
-            </div>
-            <ion-list >
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Ateletico Madrid</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">3</div>
-                <div class="team2-text">Real Madrid</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-            </ion-list>
-          </ion-item>
-
-
-          <ion-item class="livescore-style">
-            <div class="date-livescore">
-            SAT, NOV 19
-            </div>
-            <ion-list >
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Ateletico Madrid</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">3</div>
-                <div class="team2-text">Real Madrid</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-            </ion-list>
-          </ion-item>
-
-
-
-          <ion-item class="livescore-style">
-            <div class="date-livescore">
-            SUN, NOV 20
-            </div>
-            <ion-list >
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Ateletico Madrid</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">3</div>
-                <div class="team2-text">Real Madrid</div>
-              </ion-item>
-
-              <ion-item class="result-livescore">
-                <div class="team1-text">Middlesbrough</div>
-                <div class="score1-text">0</div>
-                <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
-                <div class="team2-text">Chelsea</div>
-              </ion-item>
-            </ion-list>
-          </ion-item>
-
-
     <ion-list>
   </ion-content>
 </ion-view>

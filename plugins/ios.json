@@ -7,6 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-admob": {
+            "PACKAGE_NAME": "com.ionicframework.myapp255311"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.ionicframework.myapp255311"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.myapp255311"
         },
@@ -22,12 +28,22 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.myapp255311"
         },
-        "ionic-plugin-keyboard": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.myapp255311"
         },
-        "cordova-plugin-whitelist": {
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.myapp255311"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-connectivity-monitor": {
+            "PACKAGE_NAME": "com.ionicframework.myapp255311"
+        },
+        "cordova-libgoogleadmobads": {
+            "PACKAGE_NAME": "com.ionicframework.myapp255311"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.myapp255311"
+        }
+    }
 }

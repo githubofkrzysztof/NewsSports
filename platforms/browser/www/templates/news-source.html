@@ -1,4 +1,7 @@
 <ion-view view-title="{{title}}">
+  <ion-nav-buttons side="right">
+    <div style = "width : 74px; height : 43px;"></div>
+  </ion-nav-buttons>
   <ion-content>
 
     <div class="search-container">
@@ -7,6 +10,9 @@
     		<input type="search" placeholder="Search" class="input-text" ng-model="searchQuery"/>
     	</label>
     </div>
+
+    <!-- <ion-spinner icon="bubbles" ng-if="showLoadingFlag" class="show-loading-icon"></ion-spinner> -->
+    <ion-spinner icon="bubbles" ng-if="showLoadingFlag" class="show-loading-icon"></ion-spinner>
 
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list >

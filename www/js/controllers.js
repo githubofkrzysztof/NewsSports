@@ -1,12 +1,123 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
+.service('dataService', function($http){
+    delete $http.defaults.headers.common['X-Requested-With'];
+
+    var current_year = new Date().getFullYear();
+    var end_year = current_year;
+    if (new Date().getMonth()+1<9){
+      current_year = current_year -1;
+    }
+
+    this.getData = function(){
+      return $http({
+        method : 'GET',
+        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+current_year+'-regular/division_team_standings.json',
+        //headers : {'Authorization': 'Basic bXlzcG9ydHNmZWVkc29ma3J6eXN6dG9mOlNqZGdkaWVvc3Vz'}
+        headers : {'Authorization': 'Basic ZGFyaW5nYXBwc2xsYzoyMUJyYXZvMzZaZXRh'}
+      });
+    }
+})
+
+.service('dataService1', function($http){
+    delete $http.defaults.headers.common['X-Requested-With'];
+
+    var current_year = new Date().getFullYear();
+    this.getData = function(date){
+      return $http({
+        method : 'GET',
+        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+current_year+'-regular/scoreboard.json?fordate='+date,
+        //headers : {'Authorization': 'Basic bXlzcG9ydHNmZWVkc29ma3J6eXN6dG9mOlNqZGdkaWVvc3Vz'}
+        headers : {'Authorization': 'Basic ZGFyaW5nYXBwc2xsYzoyMUJyYXZvMzZaZXRh'}
+      });
+    }
+})
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, $state) {
  
+})
+
+.controller('StandingsCtrl', function($scope, $http, dataService, $timeout, 
+     $state, $stateParams, $ionicPlatform, $ionicPopup) {
+ 
+        // if(window.plugins && window.plugins.AdMob) {
+        //     var admob_key = device.platform == "Android" ? "ca-app-pub-7957971173858308/3666912163" : "ca-app-pub-7957971173858308/3666912163";
+        //     var admob = window.plugins.AdMob;
+        //     admob.createBannerView( 
+        //         {
+        //             'publisherId': admob_key,
+        //             'adSize': admob.AD_SIZE.BANNER,
+        //             'bannerAtTop': false
+        //         }, 
+        //         function() {
+        //             admob.requestAd(
+        //                 { 'isTesting': false }, 
+        //                 function() {
+        //                     admob.showAd(true);
+        //                 }, 
+        //                 function() { console.log('failed to request ad'); }
+        //             );
+        //         }, 
+        //         function() { console.log('failed to create banner view'); }
+        //     );
+        // }
+
+    var admobid = {};
+    if( /(android)/i.test(navigator.userAgent) ) { // for android & amazon-fireos
+      admobid = {
+        banner: 'ca-app-pub-1099116351739935/7329808809', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-1099116351739935/7329808809'
+      };
+    } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
+      admobid = {
+        banner: 'ca-app-pub-1099116351739935/1422876001', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-1099116351739935/1422876001'
+      };
+    } else { // for windows phone
+      admobid = {
+        banner: 'ca-app-pub-xxx/zzz', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-xxx/kkk'
+      };
+    }
+
+    if(AdMob) AdMob.createBanner({
+      adId: admobid.banner,
+      position: AdMob.AD_POSITION.BOTTOM_CENTER,
+      autoShow: true 
+    });
+
+    $scope.standingData = null;
+    $scope.showLoadingFlag = true;
+    dataService.getData().then(function(dataResponse){
+      $scope.showLoadingFlag = false;
+      $scope.standingData = dataResponse.data.divisionteamstandings.division;
+      console.log($scope.standingData);
+    });
+
+    
+    // $timeout(function(){
+    //   $scope.showLoadingFlag = false;
+    // }, 3000);
+
+    $scope.refresh = function(){
+        $scope.standingData = null;
+        $scope.showLoadingFlag = true;
+        dataService.getData().then(function(dataResponse){
+            $scope.showLoadingFlag = false;
+            $scope.standingData = dataResponse.data.divisionteamstandings.division;
+            console.log($scope.standingData);
+        });
+
+        
+        // $timeout(function(){
+        //   $scope.showLoadingFlag = false;
+        // }, 3000);
+    }
 })
 
 .controller('NewsCtrl', function($scope, $ionicActionSheet, $timeout, $rootScope, TwitterREST) {
@@ -1059,8 +1170,123 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 })
 
-.controller('LiveScoresCtrl', function($scope) {
+.controller('LiveScoresCtrl', function($scope, dataService1) {
+    $scope.scoreData = [];
+    $scope.showLoadingFlag = true;
 
+    var today = new Date();
+    today = new Date(today.getTime() + 60*60*24*1000*7)
+
+    var count = 0;
+    for (var i=0; i<15; i++){
+
+        today = new Date(today.getTime() - 60*60*24*1000);
+        var dd=today.getDate();
+        var mm=today.getMonth()+1;
+        var yyyy=today.getFullYear();
+
+        if (dd<10){
+          dd='0'+dd;
+        }
+        if (mm<10){
+          mm='0'+mm;
+        }
+        var date = yyyy+""+mm+""+dd;
+
+        //$scope.showLoadingFlag = true;
+
+        dataService1.getData(date).then(function(dataResponse){
+
+            count++;
+
+            if (dataResponse.data.scoreboard.gameScore != undefined){
+
+              $scope.scoreData.push(dataResponse.data.scoreboard.gameScore);
+              console.log($scope.scoreData);
+              // for (var j=0; j<dataResponse.data.scoreboard.gameScore.length; j++){
+              //     console.log(dataResponse.data.scoreboard.gameScore[j]);
+              //     $scope.scoreData.push(dataResponse.data.scoreboard.gameScore[j]);
+              // }
+            }
+            if (count == 15){
+                $scope.showLoadingFlag = false;
+
+                for (var i = 0; i<$scope.scoreData.length; i++){
+                    for (var j = i+1; j<$scope.scoreData.length; j++){
+                        var d1=Date.parse($scope.scoreData[i][0].game.date);
+                        var d2=Date.parse($scope.scoreData[j][0].game.date);
+                        var temp;
+                        if (d1<d2){
+                            temp = $scope.scoreData[i];
+                            $scope.scoreData[i]=$scope.scoreData[j];
+                            $scope.scoreData[j]=temp;
+                        }
+                    }
+                }
+            }
+            
+        });
+    }
+
+    $scope.refresh = function(){
+        $scope.scoreData = [];
+        $scope.showLoadingFlag = true;
+
+        var today = new Date();
+        today = new Date(today.getTime() + 60*60*24*1000*7)
+
+        var count = 0;
+        for (var i=0; i<15; i++){
+
+            today = new Date(today.getTime() - 60*60*24*1000);
+            var dd=today.getDate();
+            var mm=today.getMonth()+1;
+            var yyyy=today.getFullYear();
+
+            if (dd<10){
+              dd='0'+dd;
+            }
+            if (mm<10){
+              mm='0'+mm;
+            }
+            var date = yyyy+""+mm+""+dd;
+
+            //$scope.showLoadingFlag = true;
+
+            dataService1.getData(date).then(function(dataResponse){
+
+                count++;
+
+                if (dataResponse.data.scoreboard.gameScore != undefined){
+
+                  $scope.scoreData.push(dataResponse.data.scoreboard.gameScore);
+                  console.log($scope.scoreData);
+                  // for (var j=0; j<dataResponse.data.scoreboard.gameScore.length; j++){
+                  //     console.log(dataResponse.data.scoreboard.gameScore[j]);
+                  //     $scope.scoreData.push(dataResponse.data.scoreboard.gameScore[j]);
+                  // }
+                }
+                if (count == 15){
+                    $scope.showLoadingFlag = false;
+
+                    for (var i = 0; i<$scope.scoreData.length; i++){
+                        for (var j = i+1; j<$scope.scoreData.length; j++){
+                            var d1=Date.parse($scope.scoreData[i][0].game.date);
+                            var d2=Date.parse($scope.scoreData[j][0].game.date);
+                            var temp;
+                            if (d1<d2){
+                                temp = $scope.scoreData[i];
+                                $scope.scoreData[i]=$scope.scoreData[j];
+                                $scope.scoreData[j]=temp;
+                            }
+                        }
+                    }
+                }
+                
+            });
+        }
+    }
+    
 })
 
 .controller('ManageFeedsCtrl', function($scope, $stateParams,$ionicActionSheet, $timeout) {

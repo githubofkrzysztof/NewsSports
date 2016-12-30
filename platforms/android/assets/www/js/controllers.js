@@ -1,12 +1,80 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
+.service('dataService', function($http){
+    delete $http.defaults.headers.common['X-Requested-With'];
+
+    var current_year = new Date().getFullYear();
+    this.getData = function(){
+      return $http({
+        method : 'GET',
+        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+current_year+'-regular/division_team_standings.json',
+        //headers : {'Authorization': 'Basic bXlzcG9ydHNmZWVkc29ma3J6eXN6dG9mOlNqZGdkaWVvc3Vz'}
+        headers : {'Authorization': 'Basic ZGFyaW5nYXBwc2xsYzoyMUJyYXZvMzZaZXRh'}
+      });
+    }
+})
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, $state) {
  
+})
+
+.controller('StandingsCtrl', function($scope, $http, dataService, $timeout, 
+     $state, $stateParams, $ionicPlatform, $ionicPopup) {
+ 
+        // if(window.plugins && window.plugins.AdMob) {
+        //     var admob_key = device.platform == "Android" ? "ca-app-pub-7957971173858308/3666912163" : "ca-app-pub-7957971173858308/3666912163";
+        //     var admob = window.plugins.AdMob;
+        //     admob.createBannerView( 
+        //         {
+        //             'publisherId': admob_key,
+        //             'adSize': admob.AD_SIZE.BANNER,
+        //             'bannerAtTop': false
+        //         }, 
+        //         function() {
+        //             admob.requestAd(
+        //                 { 'isTesting': false }, 
+        //                 function() {
+        //                     admob.showAd(true);
+        //                 }, 
+        //                 function() { console.log('failed to request ad'); }
+        //             );
+        //         }, 
+        //         function() { console.log('failed to create banner view'); }
+        //     );
+        // }
+
+    $scope.standingData = null;
+    $scope.showLoadingFlag = true;
+    dataService.getData().then(function(dataResponse){
+      $scope.showLoadingFlag = false;
+      $scope.standingData = dataResponse.data.divisionteamstandings.division;
+      console.log($scope.standingData);
+    });
+
+    
+    // $timeout(function(){
+    //   $scope.showLoadingFlag = false;
+    // }, 3000);
+
+    $scope.refresh = function(){
+        $scope.standingData = null;
+        $scope.showLoadingFlag = true;
+        dataService.getData().then(function(dataResponse){
+            $scope.showLoadingFlag = false;
+            $scope.standingData = dataResponse.data.divisionteamstandings.division;
+            console.log($scope.standingData);
+        });
+
+        
+        // $timeout(function(){
+        //   $scope.showLoadingFlag = false;
+        // }, 3000);
+    }
 })
 
 .controller('NewsCtrl', function($scope, $ionicActionSheet, $timeout, $rootScope, TwitterREST) {

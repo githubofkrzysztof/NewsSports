@@ -3,16 +3,6 @@ angular.module('services', [])
 .factory('Base64', function(){
     var self = this;
     self.encode = function (input) {
-        // Converts each character in the input to its Unicode number, then writes
-        // out the Unicode numbers in binary, one after another, into a string.
-        // This string is then split up at every 6th character, these substrings
-        // are then converted back into binary integers and are used to subscript
-        // the "swaps" array.
-        // Since this would create HUGE strings of 1s and 0s, the distinct steps
-        // above are actually interleaved in the code below (ie. the long binary
-        // string, called "input_binary", gets processed while it is still being
-        // created, so that it never gets too big (in fact, it stays under 13
-        // characters long no matter what).
 
         // The indices of this array provide the map from numbers to base 64
         var swaps = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","+","/"];

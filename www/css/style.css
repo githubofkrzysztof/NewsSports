@@ -148,7 +148,7 @@
 /*  News Source Screen  */
 
 .show-loading-icon{
-	width: 10vh; height : 10vh; position: absolute; top: 47vh; left: calc(50% - 5vh); left: -webkit-calc(50% - 5vh); z-index: 200;
+	width: 10vh; height : 10vh; position: absolute; top: 40vh; left: calc(50% - 5vh); left: -webkit-calc(50% - 5vh); z-index: 200;
 }
 
 .spinner svg {
@@ -159,6 +159,7 @@
 .bar-stable .button.button-clear{
 	color : white;
 }
+
 .custom-back-button{
 	background-image : url('../img/back.png') !important;
 	background-size: 100% 100% !important; width : 50px !important;
@@ -310,11 +311,16 @@ input[type="search"]{
 }
 
 .standing-content{
-	height : calc(100vh - 124px); background-color : rgb(21, 21, 21);
+	height : calc(100vh - 64px); background-color : rgb(21, 21, 21);
 }
 
 .banner{
-	width : 100%; position: fixed; height: 60px; bottom: 0px;
+	width : 100%; position: fixed; height: 16vw; bottom: 0px;
+}
+
+.show-loading-icon1{
+	width: 10vh; height : 10vh; position: absolute; top: 40vh; left: calc(50% - 5vh); 
+	left: -webkit-calc(50% - 5vh); z-index: 200; fill:white;
 }
 
 /*.standing-list-container .list{
@@ -357,7 +363,7 @@ input[type="search"]{
 }
 
 .team1-text{
-	color : white; float : left; width : 40vw; text-align: center;
+	color: #11c1f3; float : left; width : 40vw; text-align: center;
 }
 
 .score1-text{
@@ -373,7 +379,7 @@ input[type="search"]{
 }
 
 .team2-text{
-	color : white; float : left; width : 40vw; text-align: center;
+	color: #11c1f3; float : left; width : 40vw; text-align: center;
 }
 
 

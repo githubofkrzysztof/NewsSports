@@ -46,7 +46,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'service
       url: '/standings',
       views: {
         'menuContent': {
-          templateUrl: 'templates/standings.html'
+          templateUrl: 'templates/standings.html',
+          controller: 'StandingsCtrl'
         }
       }
     })
