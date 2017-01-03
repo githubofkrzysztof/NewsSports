@@ -12,7 +12,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     this.getData = function(){
       return $http({
         method : 'GET',
-        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+current_year+'-regular/division_team_standings.json',
+        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+end_year+'-regular/division_team_standings.json',
         //headers : {'Authorization': 'Basic bXlzcG9ydHNmZWVkc29ma3J6eXN6dG9mOlNqZGdkaWVvc3Vz'}
         headers : {'Authorization': 'Basic ZGFyaW5nYXBwc2xsYzoyMUJyYXZvMzZaZXRh'}
       });
@@ -23,10 +23,15 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     delete $http.defaults.headers.common['X-Requested-With'];
 
     var current_year = new Date().getFullYear();
+    var end_year = current_year;
+    if (new Date().getMonth()+1<9){
+      current_year = current_year -1;
+    }
+
     this.getData = function(date){
       return $http({
         method : 'GET',
-        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+current_year+'-regular/scoreboard.json?fordate='+date,
+        url : 'https://www.mysportsfeeds.com/api/feed/pull/nfl/'+current_year+'-'+end_year+'-regular/scoreboard.json?fordate='+date,
         //headers : {'Authorization': 'Basic bXlzcG9ydHNmZWVkc29ma3J6eXN6dG9mOlNqZGdkaWVvc3Vz'}
         headers : {'Authorization': 'Basic ZGFyaW5nYXBwc2xsYzoyMUJyYXZvMzZaZXRh'}
       });

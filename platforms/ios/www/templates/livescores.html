@@ -21,7 +21,9 @@
                 <div class="score1-text" ng-if="gamedata.isCompleted==='true'">{{gamedata.homeScore}}</div>
                 <div class="score1-text" ng-if="gamedata.isInProgress==='true'">{{gamedata.homeScore}}(P)</div>
                 <div class="vs-text">:</div>
-                <div class="score2-text">1</div>
+                <div class="score2-text" ng-if="gamedata.isUnplayed==='true'">-</div>
+                <div class="score2-text" ng-if="gamedata.isCompleted==='true'">{{gamedata.awayScore}}</div>
+                <div class="score2-text" ng-if="gamedata.isInProgress==='true'">{{gamedata.awayScore}}(P)</div>
                 <div class="team2-text">{{gamedata.game.awayTeam.City}}&nbsp;{{gamedata.game.awayTeam.Name}}</div>
               </ion-item>
             </ion-list>
